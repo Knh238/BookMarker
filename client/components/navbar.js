@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+//import AppBar from '@material-ui/core/AppBar'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
@@ -47,6 +48,8 @@ const mapDispatch = dispatch => {
 
 export default connect(mapState, mapDispatch)(Navbar)
 
+// const withThemeNavbar = withTheme()(Navbar)
+// export default connect(mapState, mapDispatch)(withThemeNavbar)
 /**
  * PROP TYPES
  */
