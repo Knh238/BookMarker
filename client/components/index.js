@@ -6,6 +6,7 @@
 export {default as Navbar} from './navbar'
 export {default as Books} from './Books'
 export {default as Calender} from './Calender'
+export {default as MyQuotes} from './MyQuotes'
 export {default as Home} from './Home'
 export {default as EnhancedTable} from './Recommend'
 export {default as UserHome} from './user-home'

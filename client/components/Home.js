@@ -14,7 +14,7 @@ const theme = createMuiTheme({palette: {type: 'dark'}})
 class Home extends React.Component {
   render() {
     return (
-      <MuiThemeProvider muiTheme={theme}>
+      <MuiThemeProvider theme={theme}>
         <Table title="my books">
           <h1> my books!</h1>
           {/* <TableHead /> My books!

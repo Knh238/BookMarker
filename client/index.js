@@ -6,12 +6,11 @@ import history from './history'
 import store from './store'
 import App from './app'
 import {withStyles} from '@material-ui/core/styles'
-// const {classes} = this.props
+
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {createMuiTheme} from '@material-ui/core/styles'
-import {createPalette} from '@material-ui/core/styles'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-// import getMuiTheme from '@material-ui/styles/getMuiTheme'
+// import 'react-infinite-calendar/styles.css'
 // establishes socket connection
 import './socket'
 

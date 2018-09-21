@@ -9,7 +9,8 @@ import {
   Home,
   Books,
   Calender,
-  EnhancedTable
+  EnhancedTable,
+  MyQuotes
 } from './components'
 import {me} from './store'
 
@@ -31,6 +32,7 @@ class Routes extends Component {
         <Route exact path="/Calender" component={Calender} />
         <Route exact path="/Books" component={Books} />
         <Route exactpath="/Recommend" component={EnhancedTable} />
+        <Route exactpath="/MyQuote" component={MyQuotes} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         {isLoggedIn && (
