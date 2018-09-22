@@ -10,7 +10,10 @@ import {
   Books,
   Calender,
   EnhancedTable,
-  MyQuotes
+  MyQuotes,
+  Tags,
+  MyNotes,
+  Tab
 } from './components'
 import {me} from './store'
 
@@ -31,8 +34,11 @@ class Routes extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/Calender" component={Calender} />
         <Route exact path="/Books" component={Books} />
-        <Route exactpath="/Recommend" component={EnhancedTable} />
-        <Route exactpath="/MyQuote" component={MyQuotes} />
+        <Route exact path="/Recommend" component={EnhancedTable} />
+        <Route exact path="/MyQuotes" component={MyQuotes} />
+        <Route exact path="/MyNotes" component={MyNotes} />
+        <Route exact path="/ByTag" component={Tags} />
+        <Route exact path="/Tab" component={Tab} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         {isLoggedIn && (

@@ -6,7 +6,7 @@ import {createMuiTheme} from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import InfiniteCalendar from 'react-infinite-calendar'
 //import Calendar from 'react-calendar-material'
-// import 'react-infinite-calendar/styles.css'
+import 'react-infinite-calendar/styles.css'
 
 // // // // // const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
 
@@ -58,60 +58,42 @@ class ReleaseDates extends React.Component {
     this.setState({date: null})
   }
 
-  // //   var lastWeek = new Date(
-  // //     today.getFullYear(),
-  // //     today.getMonth(),
-  // //     today.getDate() - 7
-  // //   )
+  //   var lastWeek = new Date(
+  //     today.getFullYear(),
+  //     today.getMonth(),
+  //     today.getDate() - 7
+  //   )
   render() {
     var today = new Date()
     var lastYear = new Date(today.getFullYear())
     var twoYears = new Date(2020)
     return (
-      // <MuiThemeProvider theme={theme}>
-      <div display="flex">
-        {/* <Button
-          label="Submit"
-          primary={true}
-          type="submit"
-          onClick={this.handleSubmit}
-        /> */}
-        <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
+        <div className="calender">
+          {/* <Button
+            label="Submit"
+            primary={'true'}
+            type="submit"
+            onClick={this.handleSubmit}
+          /> */}
           <InfiniteCalendar
             displayOptions={{
               layout: 'portrait',
               // showOverlay: false,
               shouldHeaderAnimate: false,
-              text: 'white'
+              backgrounColor: 'white',
+              accentColor: 'blue'
             }}
             // width={'50%'}
             // height={'50%'}
-            display={'Years'}
+            // display={['years']}
             selected={today}
             // disabledDays={[0, 6]}
-            minDate={lastYear}
-            maxDate={twoYears}
+            minDate={new Date(2018, 0, 1)}
+            maxDate={new Date(2020, 0, 1)}
           />
-          {/* <Calendar
-            accentColor={'blue'}
-            orientation={'flex-col'}
-            showHeader={false}
-            onDatePicked={d => {
-              console.log('onDatePicked', d)
-            }}
-          /> */}
-        </MuiThemeProvider>
-      </div>
-      // </MuiThemeProvider>
-      /* <BigCalendar
-      //           localizer={localizer}
-      //           views={'month'}
-      //           events={this.state.events}
-      //           accentColor={'blue'}
-      //           orientation={'flex-col'}
-      //           // endAccessor="end"
-      //         /> */
-      //         {/* <Calendar onChange={this.handleChange} value={this.state.date} /> */}
+        </div>
+      </MuiThemeProvider>
     )
   }
 }

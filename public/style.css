@@ -1,4 +1,10 @@
-body {
+.blueG {
+  background: linear-gradient(45deg, lightblue 30%, lightcyan);
+}
+.alignR {
+  justify-content: right;
+}
+/* body {
   font-family: sans-serif;
 }
 
@@ -14,8 +20,11 @@ nav a {
   display: inline-block;
   margin: 1em;
 }
+.calender{
+  background-color:white
+} 
 
 form div {
   margin: 1em;
   display: inline-block;
-}
+} */

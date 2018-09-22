@@ -50,18 +50,18 @@
 //   }
 // }
 
-// export default connect(mapState, mapDispatch)(Navbar)
+// // export default connect(mapState, mapDispatch)(Navbar)
 
-// const withThemeNavbar = withTheme()(Navbar)
-// export default connect(mapState, mapDispatch)(withThemeNavbar)
-/**
- * PROP TYPES
- */
-// Navbar.propTypes = {
-//   handleClick: PropTypes.func.isRequired,
-//   isLoggedIn: PropTypes.bool.isRequired
-// }
-
+// // const withThemeNavbar = withTheme()(Navbar)
+// // export default connect(mapState, mapDispatch)(withThemeNavbar)
+// /**
+//  * PROP TYPES
+//  */
+// // Navbar.propTypes = {
+// //   handleClick: PropTypes.func.isRequired,
+// //   isLoggedIn: PropTypes.bool.isRequired
+// // }
+// export default Navbar
 import React from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
@@ -78,20 +78,34 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import Main from './Main'
 import {fade} from '@material-ui/core/styles/colorManipulator'
-
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import {createMuiTheme} from '@material-ui/core/styles'
+const theme = createMuiTheme({palette: {type: 'dark'}})
 const styles = {
-  root: {
-    flexGrow: 1,
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex'
-  },
+  // root: {
+  //   flexGrow: 1,
+  //   overflow: 'hidden',
+  //   position: 'relative',
+  //   display: 'flex',
+  //   justifyContent: 'space-between'
+  //   // marginLeft: 'auto'
+  // },
+  // root: {
+  //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  //   borderRadius: 3,
+  //   border: 0,
+  //   color: 'white',
+  //   height: 48,
+  //   padding: '0 30px',
+  //   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
+  // },
   grow: {
     flexGrow: 1
   },
   menuButton: {
     marginLeft: -12,
     marginRight: 20
+    // marginLeft: 'auto'
     //  align-items: right ,
   }
 }
@@ -136,74 +150,87 @@ class Navbar extends React.Component {
     const open = Boolean(anchorEl)
 
     return (
+      // <MuiThemeProvider theme={theme}>
       <div className={styles.root}>
-        {/* <FormGroup> */}
-        {/* <FormControlLabel
-            control={
-              <Switch
-                checked={auth}
-                onChange={this.handleChange}
-                aria-label="LoginSwitch"
-              />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup> */}
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              className={styles.menuButton}
-              color="inherit"
-              onClick={this.onButtonClick}
-              aria-label="Menu"
-            >
-              {' '}
-              {this.state.showComponent ? <Main /> : null}
-              <MenuIcon />
-            </IconButton>
-
-            {/* <div className={styles.profile}> */}
-            <Typography variant="title" color="inherit" className={styles.grow}>
-              Photos
-            </Typography>
-            {/* {/* {auth && ( */}
-            <div>
+        <MuiThemeProvider theme={theme}>
+          <FormGroup color="primary">
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={auth}
+                  onChange={this.handleChange}
+                  aria-label="LoginSwitch"
+                  color="#ff00ff"
+                />
+              }
+              label={auth ? 'Logout' : 'Login'}
+            />
+          </FormGroup>
+          <AppBar position="static">
+            <Toolbar className={'blueG'}>
               <IconButton
-                aria-owns={open ? 'menu-appbar' : null}
-                aria-haspopup="true"
-                onClick={this.handleMenu}
+                className={styles.menuButton}
                 color="inherit"
+                onClick={this.onButtonClick}
+                aria-label="Menu"
               >
-                <AccountCircle />
+                {' '}
+                {this.state.showComponent ? <Main /> : null}
+                <MenuIcon />
               </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right'
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right'
-                }}
-                open={open}
-                onClose={this.handleClose}
+
+              <Typography
+                variant="title"
+                color="inherit"
+                className={styles.grow}
+                // className="alignR"
               >
-                {/* </div> */}
-                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          </Toolbar>
-        </AppBar>
+                BookMarker
+              </Typography>
+              {auth && (
+                <div alignContent="flex-end">
+                  <IconButton
+                    aria-owns={open ? 'menu-appbar' : null}
+                    aria-haspopup="true"
+                    onClick={this.handleMenu}
+                    color="inherit"
+                    alignContent="flex-end"
+                  >
+                    <AccountCircle className="alignR" />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right'
+                    }}
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right'
+                    }}
+                    open={open}
+                    onClose={this.handleClose}
+                  >
+                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  </Menu>
+                </div>
+              )}
+            </Toolbar>
+          </AppBar>
+        </MuiThemeProvider>
       </div>
     )
   }
 }
 
-Navbar.propTypes = {
+{
+  /* Navbar.propTypes = {
   classes: PropTypes.object.isRequired
+} */
 }
-
-export default withStyles(styles)(Navbar)
+export default Navbar
+{
+  /* export default withStyles(styles)(Navbar) */
+}

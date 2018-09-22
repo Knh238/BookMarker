@@ -1,48 +1,144 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// import React from 'react'
+// import PropTypes from 'prop-types'
 
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow
-} from '@material-ui/core/Table'
-import {createMuiTheme} from '@material-ui/core/styles'
-const theme = createMuiTheme({palette: {type: 'dark'}})
+// import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+// import Table, {
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TableRow
+// } from '@material-ui/core/Table'
+// import {createMuiTheme} from '@material-ui/core/styles'
+// import Typography from '@material-ui/core/Typography'
+// const theme = createMuiTheme({palette: {type: 'dark'}})
 
-class Home extends React.Component {
-  render() {
-    return (
-      <MuiThemeProvider theme={theme}>
-        <Table title="my books">
-          <h1> my books!</h1>
-          {/* <TableHead /> My books!
+// class Home extends React.Component {
+//   render() {
+//     return (
+// <MuiThemeProvider theme={theme}>
+// <Typography variant="headline" color="secondary" align="center">
+//   My books
+// </Typography>
+// <Typography variant="headline" color="secondary" align="center">
+//   because girl, your kindle is ON FIYA
+// </Typography>
+{
+  /* <Table title="my books"> */
+}
+{
+  /* <Typography variant="title" color="secondary" noWrap>
+            My books
+          </Typography> */
+}
+{
+  /* <TableHead /> My books!
           {/* <TableRow>
               <TableCell key="author">author </TableCell>
               {/* <TableCell key="genre">genre</TableCell>
               <TableCell key="title">title</TableCell>
-              <TableCell key="series">series number </TableCell> */}
-          {/* </TableRow>
-          </TableHead> */}
-          {/* <TableBody> */}
-          {/* <TableRow key={`${n.firstName}-${n.lastName}`}>
+              <TableCell key="series">series number </TableCell> */
+}
+{
+  /* </TableRow>
+          </TableHead> */
+}
+{
+  /* <TableBody> */
+}
+{
+  /* <TableRow key={`${n.firstName}-${n.lastName}`}>
               {' '}
               tba
               <TableCell> add stuff later</TableCell>
-            </TableRow> */}
-          {/* </TableBody> */}
-        </Table>
+            </TableRow> */
+}
+{
+  /* </TableBody> */
+}
+{
+  /* </Table>
       </MuiThemeProvider>
+    )
+  }
+} */
+}
+import React from 'react'
+import PropTypes from 'prop-types'
+import {withStyles} from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+
+const styles = {
+  card: {
+    maxWidth: 345,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around'
+  },
+  media: {
+    // ⚠️ object-fit is not supported by IE11.
+    objectFit: 'cover'
+  }
+}
+
+class Home extends React.Component {
+  // const { classes } = props;
+  render() {
+    return (
+      // <div justify="center">
+      <Card className={styles.card}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            className={styles.media}
+            height="50%"
+            image="https://pathologicallyliterate.files.wordpress.com/2013/11/read-kindle.png"
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="headline" component="h2">
+              My books
+            </Typography>
+            {/* <Typography variant="headline" color="secondary" align="center">
+              because girl, your kindle is ON FIYA
+            </Typography> */}
+            <Typography gutterBottom variant="headline" component="h1">
+              because girl, your kindle is ON FIYA
+            </Typography>
+            {/* <Typography component="p">
+              Lizards are a widespread group of squamate reptiles, with over
+              6,000 species, ranging across all continents except Antarctica
+            </Typography> */}
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </CardActions>
+      </Card>
+      // </div>
     )
   }
 }
 
 // Home.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
+
+export default withStyles(styles)(Home)
+
+// Home.propTypes = {
 //   classes: PropTypes.object.isRequired
 // }
-
-export default Home
 /* <Table /> */
 /* <TableBody />
 <TableCell />

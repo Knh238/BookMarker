@@ -99,8 +99,8 @@ const styles = theme => ({
   //   }
   // },
   toolbar: {
-    // display: 'flex',
-    // alignItems: 'center',
+    display: 'flex',
+    alignItems: 'center',
     // justifyContent: 'flex-end',
     // padding: '0 8px',
     ...theme.mixins.toolbar
@@ -259,18 +259,14 @@ class Main extends React.Component {
   }
 }
 
-{
-  /* // Main.propTypes = { */
-}
-{
-  /* //  classes: PropTypes.object.isRequired,
+/* // Main.propTypes = { */
+
+/* //  classes: PropTypes.object.isRequired,
 //  theme: PropTypes.object.isRequired
 //  } */
-}
 
-{
-  /* // export default withStyles(styles, {withTheme: true})(Main) */
-}
+/* // export default withStyles(styles, {withTheme: true})(Main) */
+
 export default Main
 // /* /* <List>
 //               <ListItem button component={Link} to="/">
