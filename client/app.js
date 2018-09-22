@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles'
 import {Navbar} from './components'
 // import CssBaseline from 'material-ui/CssBaseline'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Main from './Main'
+// import Main from './Main'
 import Routes from './routes'
 
 class App extends Component {
@@ -12,7 +12,8 @@ class App extends Component {
     return (
       <div>
         <CssBaseline />
-        <Main />
+        <Navbar />
+        {/* <Main /> */}
         <Routes />
       </div>
     )
