@@ -1,6 +1,6 @@
 const passport = require('passport')
 const router = require('express').Router()
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+// const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const GoodreadsStrategy = require('passport-goodreads').Strategy
 const {User} = require('../db/models')
 module.exports = router
@@ -23,22 +23,29 @@ if (!process.env.GOODREADS_KEY || !process.env.GOODREADS_SECRET) {
   console.log('Google client ID / secret not found. Skipping GoodreadsOAuth.')
 } else {
   const goodReadsConfig = {
-    clientKey: process.env.GOODREADS_KEY,
-    clientSecret: process.env.GOODREADS_SECRET,
+    consumerKey: process.env.GOODREADS_KEY,
+    consumerSecret: process.env.GOODREADS_SECRET,
     callbackURL: process.env.GOODREADS_CALLBACK
   }
 
   const strategy = new GoodreadsStrategy(
-    {
-      consumerKey: GOODREADS_KEY,
-      consumerSecret: GOODREADS_SECRET,
-      callbackURL: 'http://127.0.0.1:3000/auth/goodreads/callback'
-    },
+    goodReadsConfig,
+    // {
+    //   consumerKey: GOODREADS_KEY,
+    //   consumerSecret: GOODREADS_SECRET,
+    //   callbackURL: 'http://127.0.0.1:3000/auth/goodreads/callback'
+    // },
     (token, tokenSecret, profile, done) => {
-      // const googleId = profile.id
-      // const name = profile.displayName
-      // const email = profile.emails[0].value
-      User.findOrCreate({goodreadsId: profile.id})
+      // (token, refreshToken, profile, done) => {
+      const goodreadsId = profile.id
+      const name = profile.displayName
+      const email = profile.emails[0].value
+
+      User.findOrCreate({
+        where: {goodreadsId},
+        defaults: {name, email}
+      })
+        // User.findOrCreate({goodreadsId: profile.id})
 
         .then(([user]) => done(null, user))
         .catch(done)

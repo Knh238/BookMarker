@@ -7,18 +7,25 @@ import GridListTileBar from '@material-ui/core/GridListTileBar'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper
+    // justifyContent: 'space-around',
+    overflow: 'hidden'
+    // backgroundColor: theme.palette.background.paper
   },
   gridList: {
-    width: 500,
-    height: 450
+    width: '30%',
+    height: '30%'
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)'
@@ -27,66 +34,66 @@ const styles = theme => ({
 
 const tileData = [
   {
-    img: 'https://material-ui.com/static/images/grid-list/breakfast.jpg',
+    img: 'https://cdn141.picsart.com/274671628022201.jpg?r640x640',
     title: 'title of book ',
     author: 'author name ',
     cols: 2,
     featured: true
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/burgers.jpg',
+    img: 'https://cdn140.picsart.com/273914493013201.jpg?r1024x1024',
     title: 'title of book ',
     author: 'author name '
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/camera.jpg',
+    img: 'https://cdn140.picsart.com/273745367018201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name '
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/morning.jpg',
+    img: 'https://cdn140.picsart.com/274874466003201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name '
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/hats.jpg',
+    img: 'https://cdn141.picsart.com/274706808039201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name '
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/honey.jpg',
+    img: 'https://cdn140.picsart.com/274618778019201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name '
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/vegetables.jpg',
+    img: 'https://cdn131.picsart.com/274281406021201.png?c480x480',
     title: 'title of book ',
     author: 'author name ',
     cols: 2
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/plant.jpg',
+    img: 'https://cdn131.picsart.com/274469163001201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name '
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/mushroom.jpg',
+    img: 'https://cdn140.picsart.com/274347317000201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name '
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/olive.jpg',
+    img: 'https://cdn140.picsart.com/274127277046201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name '
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/star.jpg',
+    img: 'https://cdn140.picsart.com/274127277046201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name ',
     cols: 2
   },
   {
-    img: 'https://material-ui.com/static/images/grid-list/bike.jpg',
+    img: 'https://cdn130.picsart.com/273322670015201.jpg?c480x480',
     title: 'title of book ',
     author: 'author name '
   }
@@ -97,13 +104,14 @@ function MyQuotes(props) {
 
   return (
     <div className={styles.root}>
-      <GridList cellHeight={180} className={styles.gridList}>
+      <GridList cellHeight={500} className={styles.gridList}>
         <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}>
-          <ListSubheader component="div">December</ListSubheader>
+          <ListSubheader component="div">My Fav Quotes</ListSubheader>
         </GridListTile>
         {tileData.map(tile => (
           <GridListTile key={tile.img}>
             <img src={tile.img} alt={tile.title} />
+
             <GridListTileBar
               title={tile.title}
               subtitle={<span>by: {tile.author}</span>}
@@ -119,6 +127,14 @@ function MyQuotes(props) {
     </div>
   )
 }
+
+/* <div class="container">
+  <img src="nature.jpg" alt="Norway" style="width:100%;">
+  <div class="text-block"> 
+    <h4>Nature</h4>
+    <p>What a beautiful sunrise</p>
+  </div>
+</div> */
 
 MyQuotes.propTypes = {
   classes: PropTypes.object.isRequired

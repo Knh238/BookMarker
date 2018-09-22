@@ -91,11 +91,12 @@ class Home extends React.Component {
   render() {
     return (
       // <div justify="center">
-      <Card className={styles.card}>
+      <Card>
+        {/* // <Card className={styles.card}> */}
         <CardActionArea>
           <CardMedia
             component="img"
-            className={styles.media}
+            // className={styles.media}
             height="50%"
             image="https://pathologicallyliterate.files.wordpress.com/2013/11/read-kindle.png"
             title="Contemplative Reptile"
