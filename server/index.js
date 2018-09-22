@@ -66,6 +66,16 @@ const createApp = () => {
   // auth and api routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
+  app.get('/auth/goodreads', passport.authenticate('goodreads'))
+
+  app.get(
+    '/auth/goodreads/callback',
+    passport.authenticate('goodreads', {failureRedirect: '/login'}),
+    function(req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/')
+    }
+  )
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))

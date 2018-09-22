@@ -51,6 +51,7 @@
     "moment": "^2.22.2",
     "morgan": "^1.9.1",
     "passport": "^0.3.2",
+    "passport-goodreads": "^1.0.0",
     "passport-google-oauth": "^1.0.0",
     "pg": "^6.1.2",
     "pg-hstore": "^2.3.2",

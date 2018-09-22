@@ -1,6 +1,7 @@
 const passport = require('passport')
 const router = require('express').Router()
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+const GoodreadsStrategy = require('passport-goodreads').Strategy
 const {User} = require('../db/models')
 module.exports = router
 
@@ -18,38 +19,55 @@ module.exports = router
  * process.env.GOOGLE_CALLBACK = '/your/google/callback'
  */
 
-if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
-  console.log('Google client ID / secret not found. Skipping Google OAuth.')
+if (!process.env.GOODREADS_KEY || !process.env.GOODREADS_SECRET) {
+  console.log('Google client ID / secret not found. Skipping GoodreadsOAuth.')
 } else {
-  const googleConfig = {
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK
+  const goodReadsConfig = {
+    clientKey: process.env.GOODREADS_KEY,
+    clientSecret: process.env.GOODREADS_SECRET,
+    callbackURL: process.env.GOODREADS_CALLBACK
   }
 
-  const strategy = new GoogleStrategy(
-    googleConfig,
-    (token, refreshToken, profile, done) => {
-      const googleId = profile.id
-      const name = profile.displayName
-      const email = profile.emails[0].value
+  const strategy = new GoodreadsStrategy(
+    {
+      consumerKey: GOODREADS_KEY,
+      consumerSecret: GOODREADS_SECRET,
+      callbackURL: 'http://127.0.0.1:3000/auth/goodreads/callback'
+    },
+    (token, tokenSecret, profile, done) => {
+      // const googleId = profile.id
+      // const name = profile.displayName
+      // const email = profile.emails[0].value
+      User.findOrCreate({goodreadsId: profile.id})
 
-      User.findOrCreate({
-        where: {googleId},
-        defaults: {name, email}
-      })
         .then(([user]) => done(null, user))
         .catch(done)
     }
   )
-
   passport.use(strategy)
+  // const strategy = new GoogleStrategy(
+  //   googleConfig,
+  //   (token, refreshToken, profile, done) => {
+  //     const goodReadsId = profile.id
+  //     const name = profile.displayName
+  //     const email = profile.emails[0].value
 
-  router.get('/', passport.authenticate('google', {scope: 'email'}))
+  //     User.findOrCreate({
+  //       where: {goodReadsId},
+  //       defaults: {name, email}
+  //     })
+  //       .then(([user]) => done(null, user))
+  //       .catch(done)
+  //   }
+  // )
+
+  // passport.use(strategy)
+
+  router.get('/', passport.authenticate('goodReads', {scope: 'email'}))
 
   router.get(
     '/callback',
-    passport.authenticate('google', {
+    passport.authenticate('goodReads', {
       successRedirect: '/home',
       failureRedirect: '/login'
     })
