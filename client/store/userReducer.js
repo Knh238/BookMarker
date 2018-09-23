@@ -1,6 +1,6 @@
 import axios from 'axios'
 import history from '../history'
-// const goodreads = require('goodreads-api-node')
+const goodreads = require('goodreads-api-node')
 // getUserInfo(userID)
 // getUsersShelves(userID)
 /**
@@ -29,21 +29,6 @@ export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
     dispatch(getUser(res.data || defaultUser))
-  } catch (err) {
-    console.error(err)
-  }
-}
-export const getlist = () => async dispatch => {
-  try {
-    const res = await axios.get(
-      'https://www.goodreads.com/review/list/5900639key=g8lgxPvHf4zuzCQqE7NQ'
-    )
-    //www.goodreads.com/shelf/list.xml
-    // https: key
-    // user_id
-    console.log(res.data)
-    // <tbody id="booksBody">
-    dispatch(gotList(res.data))
   } catch (err) {
     console.error(err)
   }
@@ -86,6 +71,34 @@ export const auth = (email, password, method) => async dispatch => {
     console.error(dispatchOrHistoryErr)
   }
 }
+export const getlist = () => async dispatch => {
+  try {
+    // const res = await axios.get(
+    //   'https://www.goodreads.com/review/list/5900639key=g8lgxPvHf4zuzCQqE7NQ'
+    // )
+    const {data} = await axios.get(
+      'https://www.goodreads.com/series/show/ID.xml',
+      {ID: 52637}
+    )
+    //52637
+    goodreads.getUsersShelves(id)
+    // 52637-charley-davidson
+    //www.goodreads.com/shelf/list.xml
+
+    // https: key
+    // user_id
+    //     See a series
+    // Info on a series
+    // URL: https://www.goodreads.com/series/show/ID.xml    (sample url)
+    // HTTP method: GET
+
+    console.log(data)
+    // <tbody id="booksBody">
+    dispatch(gotList(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 export const logout = history => async dispatch => {
   try {
@@ -106,11 +119,11 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case GET_USER:
       return {...state, current: action.user}
-    case REMOVED_USER_FROM_LOGIN:
-      return {
-        ...state,
-        current: {}
-      }
+    // case REMOVED_USER_FROM_LOGIN:
+    //   return {
+    //     ...state,
+    //     current: {}
+    //   }
     case GOT_LIST:
       return {...state, list: action.books}
     default:

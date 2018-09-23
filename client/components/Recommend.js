@@ -24,6 +24,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -293,10 +294,10 @@ class EnhancedTable extends React.Component {
       rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage)
 
     return (
-      <Paper className={classes.root}>
+      <Paper className={styles.root}>
         <EnhancedTableToolbar numSelected={selected.length} />
-        <div className={classes.tableWrapper}>
-          <Table className={classes.table} aria-labelledby="tableTitle">
+        <div className={styles.tableWrapper}>
+          <Table className={styles.table} aria-labelledby="tableTitle">
             <EnhancedTableHead
               numSelected={selected.length}
               order={order}
@@ -364,7 +365,7 @@ EnhancedTable.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(EnhancedTable)
+export default connect()(EnhancedTable)
 /* <Table /> */
 /* <TableBody />
 <TableCell />

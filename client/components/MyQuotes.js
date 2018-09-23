@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
@@ -139,5 +140,6 @@ function MyQuotes(props) {
 MyQuotes.propTypes = {
   classes: PropTypes.object.isRequired
 }
+export default connect()(MyQuotes)
 
-export default withStyles(styles)(MyQuotes)
+// export default withStyles(styles)(MyQuotes)

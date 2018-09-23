@@ -22,48 +22,37 @@
 // <Typography variant="headline" color="secondary" align="center">
 //   because girl, your kindle is ON FIYA
 // </Typography>
-{
-  /* <Table title="my books"> */
-}
-{
-  /* <Typography variant="title" color="secondary" noWrap>
+
+/* <Table title="my books"> */
+
+/* <Typography variant="title" color="secondary" noWrap>
             My books
           </Typography> */
-}
-{
-  /* <TableHead /> My books!
+
+/* <TableHead /> My books!
           {/* <TableRow>
               <TableCell key="author">author </TableCell>
               {/* <TableCell key="genre">genre</TableCell>
               <TableCell key="title">title</TableCell>
               <TableCell key="series">series number </TableCell> */
-}
-{
-  /* </TableRow>
+/* </TableRow>
           </TableHead> */
-}
-{
-  /* <TableBody> */
-}
-{
-  /* <TableRow key={`${n.firstName}-${n.lastName}`}>
+/* <TableBody> */
+/* <TableRow key={`${n.firstName}-${n.lastName}`}>
               {' '}
               tba
               <TableCell> add stuff later</TableCell>
             </TableRow> */
-}
-{
-  /* </TableBody> */
-}
-{
-  /* </Table>
+/* </TableBody> */
+/* </Table>
       </MuiThemeProvider>
     )
   }
 } */
-}
+
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -124,7 +113,8 @@ class Home extends React.Component {
 //   classes: PropTypes.object.isRequired,
 // };
 
-export default withStyles(styles)(Home)
+// export default withStyles(styles)(Home)
+export default connect()(Home)
 
 // Home.propTypes = {
 //   classes: PropTypes.object.isRequired

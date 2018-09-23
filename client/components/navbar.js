@@ -86,7 +86,7 @@ import {fade} from '@material-ui/core/styles/colorManipulator'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import {createMuiTheme} from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
-const theme = createMuiTheme({palette: {type: 'dark'}})
+// const theme = createMuiTheme({palette: {type: 'dark'}})
 const styles = {
   root: {
     display: 'flex'
@@ -158,11 +158,10 @@ class Navbar extends React.Component {
         <AppBar position="relative">
           <Toolbar className="blueG">
             <IconButton
-              // className={styles.menuButton}
               color="inherit"
               onClick={this.onButtonClick}
               aria-label="Menu"
-              firstChild={true}
+              firstchild="true"
               float="left"
             >
               {this.state.showComponent ? <Main /> : null}
@@ -227,30 +226,19 @@ class Navbar extends React.Component {
             ) : (
               <div className={styles.links}>
                 <Divider />
-                {/* The navbar will show these links before you log in */}
+
                 <Button
                   variant="contained"
                   size="medium"
-                  // background="linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
                   // onClick={this.handleMenu}
                   color="primary"
-                  lastChild={true}
+                  lastchild="true"
                   float="right"
                 >
                   <Link to="/login" className="linkB">
                     <h3>Login</h3>
                   </Link>
                 </Button>
-                {/* <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <Link to="/signup" className="btn btn-primary">
-                    Sign Up!
-                  </Link>
-                </IconButton> */}
               </div>
             )}
           </Toolbar>
@@ -263,7 +251,8 @@ class Navbar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: !!state.user.current.id
+    ...state,
+    isLoggedIn: !!state.current
     // handleClick, isLoggedIn}
   }
 }

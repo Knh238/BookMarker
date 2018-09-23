@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {withStyles} from '@material-ui/core/styles'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
@@ -33,6 +34,7 @@ import ReportIcon from '@material-ui/icons/Report'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import Navbar from './navbar'
+// import {connect} from 'http2'
 
 const drawerWidth = 240
 
@@ -79,15 +81,7 @@ class Main extends React.Component {
     return (
       // <MuiThemeProvider theme={theme}>
       <div className={styles.root}>
-        {/* <AppBar
-          position="absolute"
-          className={classNames(
-            styles.appBar,
-            this.state.open && styles.appBarShift
-          )}
-        > */}
         <Toolbar>
-          {/* //disableGutters={!this.state.open}> */}
           <IconButton
             color="inherit"
             aria-label="Open drawer"
@@ -98,9 +92,7 @@ class Main extends React.Component {
             )}
           />
           <MenuIcon />
-          {/* </IconButton> */}
         </Toolbar>
-        {/* </AppBar> */}
         <Drawer
           variant="permanent"
           classes={{
@@ -182,4 +174,4 @@ class Main extends React.Component {
 //  theme: PropTypes.object.isRequired
 //  } */
 
-export default Main
+export default connect()(Main)

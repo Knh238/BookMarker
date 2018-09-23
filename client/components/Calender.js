@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import {createMuiTheme} from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -108,4 +109,4 @@ class ReleaseDates extends React.Component {
     )
   }
 }
-export default ReleaseDates
+export default connect()(ReleaseDates)

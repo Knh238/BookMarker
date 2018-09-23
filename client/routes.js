@@ -44,11 +44,9 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         {isLoggedIn && (
           <Switch>
-            {/* Routes placed here are only available after logging in */}
             <Route path="/userHome" component={UserHome} />
           </Switch>
         )}
-        {/* Displays our Login component as a fallback */}
         <Route component={Login} />
       </Switch>
     )
@@ -62,7 +60,9 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.current.id
+    ...state,
+    isLoggedIn: !!state.current,
+    list: state.list
     // category: state.product.category
   }
 }

@@ -8,7 +8,7 @@ import Table from '@material-ui/core/Table'
 import {createMuiTheme} from '@material-ui/core/styles'
 import MenuItem from '@material-ui/core/MenuItem'
 import TextField from '@material-ui/core/TextField'
-import {getList} from '../store/userReducer'
+import getList from '../store/userReducer'
 
 const styles = theme => ({
   container: {
@@ -27,20 +27,25 @@ const styles = theme => ({
   }
 })
 
-const theme = createMuiTheme({palette: {type: 'dark'}})
+// const theme = createMuiTheme({palette: {type: 'dark'}})
 class Books extends React.Component {
-  constructor(props) {
-    super(props)
-    // this.state = {list: props.list}
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {list: props.list}
+  // }
   // const {classes} = this.props
 
   render() {
     // console.log('this props'.this.props)
+    console.log('this state', this.props)
     const books = this.props.list
     console.log('these book', books)
+    // return (
+    // <MuiThemeProvider theme={theme}>
+    // if (books === undefined) {
+    //   return <h1> working on it</h1>
+    // } else {
     return (
-      // <MuiThemeProvider theme={theme}>
       <div
         className="books"
         style={{
@@ -64,30 +69,28 @@ class Books extends React.Component {
         {/* // </MuiThemeProvider> */}
       </div>
     )
+    // }
   }
 }
 const mapStateToProps = state => {
   return {
     // user: state.user,
     ...state,
-    user: state.user.current,
-    id: state.user.current.id,
-    list: state.user.list
+    user: state.current,
+    // id: state.user.current.id,
+    list: state.list
   }
 }
-// const mapDispatch = state => {
-//   return {
-//     ...state,
-//     user: state.user.current,
-//     id: state.user.current.id,
-//     list: state.user.list
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    gotList: () => dispatch(getList())
+  }
+}
 // Books.propTypes = {
 //   classes: PropTypes.object.isRequired
 // }
 
-export default connect(mapStateToProps)(Books)
+export default connect(mapStateToProps, mapDispatchToProps)(Books)
 
 /* <TableRow>
 <TableCell padding="checkbox">
