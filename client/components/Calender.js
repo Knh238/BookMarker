@@ -68,32 +68,43 @@ class ReleaseDates extends React.Component {
     var lastYear = new Date(today.getFullYear())
     var twoYears = new Date(2020)
     return (
-      <MuiThemeProvider theme={theme}>
-        <div className="calender">
-          {/* <Button
+      // <MuiThemeProvider theme={theme}>
+      // <div
+      //   style={{
+      //     float: 'none',
+      //     width: '500px',
+      //     marginLeft: 'auto',
+      //     marginRight: 'auto'
+      //     // display: 'flex'
+      //   }}
+      // >
+      /* <Button
             label="Submit"
             primary={'true'}
             type="submit"
             onClick={this.handleSubmit}
-          /> */}
-          <InfiniteCalendar
-            displayOptions={{
-              layout: 'portrait',
-              // showOverlay: false,
-              shouldHeaderAnimate: false,
-              backgrounColor: 'white',
-              accentColor: 'blue'
-            }}
-            // width={'50%'}
-            // height={'50%'}
-            // display={['years']}
-            selected={today}
-            // disabledDays={[0, 6]}
-            minDate={new Date(2018, 0, 1)}
-            maxDate={new Date(2020, 0, 1)}
-          />
-        </div>
-      </MuiThemeProvider>
+          /> */
+      <div id="cal">
+        <InfiniteCalendar
+          style={{
+            layout: 'portrait',
+            // showOverlay: false,
+            // display: 'flex',
+            // flexGrow: 2,
+            // justifycontent: 'space-around',
+            width: '60em',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            shouldHeaderAnimate: false,
+            backgrounColor: 'white',
+            accentColor: 'blue'
+          }}
+          // display={['years']}
+          selected={today}
+          minDate={new Date(2018, 0, 1)}
+          maxDate={new Date(2020, 0, 1)}
+        />
+      </div>
     )
   }
 }

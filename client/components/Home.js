@@ -81,7 +81,6 @@ const styles = {
     justifyContent: 'space-around'
   },
   media: {
-    // ⚠️ object-fit is not supported by IE11.
     objectFit: 'cover'
   }
 }
@@ -90,41 +89,31 @@ class Home extends React.Component {
   // const { classes } = props;
   render() {
     return (
-      // <div justify="center">
-      <Card>
-        {/* // <Card className={styles.card}> */}
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            // className={styles.media}
-            height="50%"
-            image="https://pathologicallyliterate.files.wordpress.com/2013/11/read-kindle.png"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="headline" component="h2">
-              My books
-            </Typography>
-            {/* <Typography variant="headline" color="secondary" align="center">
-              because girl, your kindle is ON FIYA
-            </Typography> */}
-            <Typography gutterBottom variant="headline" component="h1">
-              because girl, your kindle is ON FIYA
-            </Typography>
-            {/* <Typography component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography> */}
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
+      <Card
+        style={{
+          float: 'none',
+          width: '55%',
+          marginLeft: 'auto',
+          marginRight: 'auto'
+        }}
+      >
+        {' '}
+        <Typography variant="display3" align="center">
+          Books
+        </Typography>
+        <CardMedia
+          component="img"
+          // className={styles.media}
+          height="50%"
+          image="/bluesplotches.jpg"
+          title="Contemplative Reptile"
+          fullwidth
+        />
+        <CardContent>
+          <Typography variant="display2">
+            Because girl, your kindle is ON FI-YA!
+          </Typography>
+        </CardContent>
       </Card>
       // </div>
     )

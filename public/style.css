@@ -12,6 +12,25 @@
   color: azure;
   float: center;
 }
+/* #cal {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+} */
+#cal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 70em; */
+  /* height: 80%;
+  margin: 0; */
+  /* flex-grow: 2; */
+  /* background: #f3f3f3; */
+}
+.books {
+  color: azure;
+  font-size: 2em;
+}
 
 * body {
   align-content: center;

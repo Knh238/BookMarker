@@ -15,20 +15,10 @@ import withStyles from '@material-ui/core/styles/withStyles'
 
 const styles = theme => ({
   layout: {
-    width: 'auto',
+    width: '50%',
     display: 'flex',
-    // Fix IE11 issue.
-    // display: 'flex'
-    //  {
-    //   flexGrow: 1,
-    // }
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3
-    // [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-    //   width: 400,
-    //   marginLeft: 'auto',
-    //   marginRight: 'auto'
-    // }
+    marginLeft: 'auto',
+    marginRight: 'auto'
   },
   paper: {
     marginTop: theme.spacing.unit * 8,
@@ -36,9 +26,6 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     marginLeft: 40
-
-    // padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
-    //   .spacing.unit * 3}px`
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -60,15 +47,17 @@ const AuthForm = props => {
   console.log('ME PROPS', props)
 
   return (
-    <main className={styles.layout} centered="true" containerspacing={24}>
+    <main
+      className={styles.layout}
+      style={{
+        float: 'none',
+        width: '250px',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+      }}
+    >
       <Paper className={styles.paper}>
-        <Button
-          type="submit"
-          size="medium"
-          variant="contained"
-          color="primary"
-          justify="center"
-        >
+        <Button type="submit" size="medium" variant="contained" color="primary">
           <a href="/auth/goodreads">
             <h2 className="logForm">{displayName} with goodreads</h2>
           </a>
@@ -102,7 +91,15 @@ const AuthForm = props => {
         <Typography variant="headline" flex-grow="1">
           Sign in
         </Typography>
-        <form className={styles.form}>
+        <form
+          className={styles.form}
+          style={{
+            float: 'none',
+            // width: '250px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+          }}
+        >
           <FormControl margin="normal" required flex-grow="1">
             <InputLabel htmlFor="email">Email Address</InputLabel>
             <Input id="email" name="email" autoComplete="email" autoFocus />

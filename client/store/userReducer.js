@@ -38,6 +38,9 @@ export const getlist = () => async dispatch => {
     const res = await axios.get(
       'https://www.goodreads.com/review/list/5900639key=g8lgxPvHf4zuzCQqE7NQ'
     )
+    //www.goodreads.com/shelf/list.xml
+    // https: key
+    // user_id
     console.log(res.data)
     // <tbody id="booksBody">
     dispatch(gotList(res.data))
@@ -45,6 +48,28 @@ export const getlist = () => async dispatch => {
     console.error(err)
   }
 }
+
+// * getShelves
+// *
+// * @access public
+// * @param {string} id user ID
+// * @returns {promise} returns users shelves if successful
+// */
+// function getUsersShelves(id) {
+//   const fn_name = 'getUsersShelves()';
+
+//   if (!id) return Promise.reject(wrongParamsError(fn_name, 'userID'));
+
+//   const path = `${URL}/shelf/list.xml`;
+//   const options = { user_id: id, key: KEY };
+
+//   const req = Request.builder()
+//   .withPath(path)
+//   .withQueryParams(options)
+//   .build();
+
+//   return _execute(get, req, 'shelves');
+// };
 
 export const auth = (email, password, method) => async dispatch => {
   let res
@@ -133,3 +158,33 @@ export default function(state = initialState, action) {
 // List of all series a work is in
 // URL: https://www.goodreads.com/series/work/WORK_ID?format=xml    (sample url)
 // HTTP method: GET
+
+// * getBooksByAuthor
+// *
+// * @access public
+// * @param {string} authorID {number} page (optional)
+// * @returns {promise}
+// */
+// function getBooksByAuthor(id, page) {
+//   const fn_name = 'getBooksByAuthor()';
+
+//   if (!id) return Promise.reject(wrongParamsError(fn_name, 'authorID'));
+
+//   const path = `${URL}/author/list/${id}`;
+//   const options = { format: 'xml', key: KEY };
+//   if (page) options.page = page;
+
+//   const req = Request.builder()
+//   .withPath(path)
+//   .withQueryParams(options)
+//   .build()
+
+//   return _execute(get, req, 'author');
+// };
+// const Goodreads = function(credentials, callbackURL) {
+//   if (!credentials || !credentials.key || !credentials.secret) throw new GoodreadsApiError('Please pass your API key and secret.', 'Goodreads()');
+//   if (callbackURL) initOAuth(callbackURL);
+
+//   const URL = 'https://goodreads.com';
+//   const KEY = credentials.key;
+//   const SECRET = credentials.secret;

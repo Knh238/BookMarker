@@ -29,33 +29,27 @@ const styles = theme => ({
 
 const theme = createMuiTheme({palette: {type: 'dark'}})
 class Books extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   // this.state = {}
-  // }
+  constructor(props) {
+    super(props)
+    // this.state = {list: props.list}
+  }
   // const {classes} = this.props
 
-  async componentDidMount() {
-    try {
-      const res = await axios.get(
-        'https://www.goodreads.com/review/list/5900639-kristin-harper'
-        // 'https://www.goodreads.com/review/list/5900639'
-      )
-      console.log(res.data)
-      // <tbody id="booksBody">
-      // dispatch(gotList(res.data))
-    } catch (err) {
-      console.error(err)
-    }
-
-    // this.props.gotList()
-  }
   render() {
     // console.log('this props'.this.props)
     const books = this.props.list
     console.log('these book', books)
     return (
-      <MuiThemeProvider theme={theme}>
+      // <MuiThemeProvider theme={theme}>
+      <div
+        className="books"
+        style={{
+          float: 'none',
+          width: '250px',
+          marginLeft: 'auto',
+          marginRight: 'auto'
+        }}
+      >
         <ul title="my recommendations for">
           <TextField
             id="outlined-search"
@@ -67,7 +61,8 @@ class Books extends React.Component {
           />
           <li>this stuff</li>
         </ul>
-      </MuiThemeProvider>
+        {/* // </MuiThemeProvider> */}
+      </div>
     )
   }
 }
@@ -75,9 +70,19 @@ const mapStateToProps = state => {
   return {
     // user: state.user,
     ...state,
+    user: state.user.current,
+    id: state.user.current.id,
     list: state.user.list
   }
 }
+// const mapDispatch = state => {
+//   return {
+//     ...state,
+//     user: state.user.current,
+//     id: state.user.current.id,
+//     list: state.user.list
+//   }
+// }
 // Books.propTypes = {
 //   classes: PropTypes.object.isRequired
 // }

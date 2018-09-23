@@ -162,6 +162,8 @@ class Navbar extends React.Component {
               color="inherit"
               onClick={this.onButtonClick}
               aria-label="Menu"
+              firstChild={true}
+              float="left"
             >
               {this.state.showComponent ? <Main /> : null}
               <MenuIcon />
@@ -171,6 +173,12 @@ class Navbar extends React.Component {
               color="inherit"
               // className={styles.grow}
               centered="true"
+              style={{
+                float: 'none',
+                width: '200px',
+                marginLeft: 'auto',
+                marginRight: 'auto'
+              }}
             >
               BookMarker
             </Typography>
@@ -226,6 +234,8 @@ class Navbar extends React.Component {
                   // background="linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
                   // onClick={this.handleMenu}
                   color="primary"
+                  lastChild={true}
+                  float="right"
                 >
                   <Link to="/login" className="linkB">
                     <h3>Login</h3>
