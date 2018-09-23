@@ -1,6 +1,8 @@
 import axios from 'axios'
 import history from '../history'
-
+// const goodreads = require('goodreads-api-node')
+// getUserInfo(userID)
+// getUsersShelves(userID)
 /**
  * ACTION TYPES
  */
@@ -90,4 +92,44 @@ export default function(state = initialState, action) {
       return state
   }
 }
-// export default userReducer
+
+// 5900639-kristin-harper
+// https://www.goodreads.com/review/list/5900639?shelf=%23ALL%23
+
+// getUserInfo(userID)
+// getUsersShelves(userID)
+// Get the listopia lists for a given book
+// XML version of list/book. This API requires extra permission please contact us
+// URL: https://www.goodreads.com/list/book/BOOK_ID.xml    (sample url)
+// HTTP method: GET
+// Parameters:
+// key: Developer key (required).
+
+// Get the books on a members shelf
+// Get the books on a members shelf. Customize the feed with the below variables. Viewing members with profiles who have set them as visible to members only or just their friends requires using OAuth.
+// URL: https://www.goodreads.com/review/list?v=2    (sample url)
+// HTTP method: GET
+// Parameters:
+// v: 2
+// id: Goodreads id of the user
+// shelf: read, currently-reading, to-read, etc. (optional)
+// sort: title, author, cover, rating, year_pub, date_pub, date_pub_edition, date_started, date_read, date_updated, date_added, recommender, avg_rating, num_ratings, review, read_count, votes, random, comments, notes, isbn, isbn13, asin, num_pages, format, position, shelves, owned, date_purchased, purchase_location, condition (optional)
+// search[query]: query text to match against member's books (optional)
+// order: a, d (optional)
+// page: 1-N (optional)
+// per_page: 1-200 (optional)
+// key: Developer key (required).
+// See a series
+// Info on a series
+// URL: https://www.goodreads.com/series/show/ID.xml    (sample url)
+// HTTP method: GET
+
+// See all series by an author
+// List of all series by an author
+// URL: /series/list?format=xml&id=AUTHOR_ID    (sample url)
+// HTTP method: GET
+
+// See all series a work is in
+// List of all series a work is in
+// URL: https://www.goodreads.com/series/work/WORK_ID?format=xml    (sample url)
+// HTTP method: GET

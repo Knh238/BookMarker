@@ -19,6 +19,7 @@ const theme = createMuiTheme({palette: {type: 'dark'}})
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
+      <CssBaseline />
       <Router history={history}>
         <App />
       </Router>

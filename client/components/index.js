@@ -4,6 +4,7 @@
  * having to figure out which file they belong to!
  */
 export {default as Navbar} from './navbar'
+export {default as Main} from './Main'
 export {default as Books} from './Books'
 export {default as Calender} from './Calender'
 export {default as MyQuotes} from './MyQuotes'

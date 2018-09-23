@@ -2,36 +2,134 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import Button from '@material-ui/core/Button'
+import Avatar from '@material-ui/core/Avatar'
+import FormControl from '@material-ui/core/FormControl'
 
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import LockIcon from '@material-ui/icons/LockOutlined'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import withStyles from '@material-ui/core/styles/withStyles'
+
+const styles = theme => ({
+  layout: {
+    width: 'auto',
+    display: 'flex',
+    // Fix IE11 issue.
+    // display: 'flex'
+    //  {
+    //   flexGrow: 1,
+    // }
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3
+    // [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+    //   width: 400,
+    //   marginLeft: 'auto',
+    //   marginRight: 'auto'
+    // }
+  },
+  paper: {
+    marginTop: theme.spacing.unit * 8,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginLeft: 40
+
+    // padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme
+    //   .spacing.unit * 3}px`
+  },
+  avatar: {
+    margin: theme.spacing.unit,
+    backgroundColor: theme.palette.secondary.main
+  },
+  form: {
+    width: '60%', // Fix IE11 issue.
+    marginTop: theme.spacing.unit
+  },
+  submit: {
+    marginTop: theme.spacing.unit * 3
+  }
+})
 /**
  * COMPONENT
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  // console.log('ME PROPS', props)
+  console.log('ME PROPS', props)
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/goodreads">{displayName} with goodreads</a>
-    </div>
+    <main className={styles.layout} centered="true" containerspacing={24}>
+      <Paper className={styles.paper}>
+        <Button
+          type="submit"
+          size="medium"
+          variant="contained"
+          color="primary"
+          justify="center"
+        >
+          <a href="/auth/goodreads">
+            <h2 className="logForm">{displayName} with goodreads</h2>
+          </a>
+        </Button>
+        {/* <a href="/auth/goodreads">
+          <h2 className="logForm">{displayName} with goodreads</h2>
+        </a> */}
+        {/* <form onSubmit={handleSubmit} name={name}>
+            <div>
+              <label htmlFor="email">
+                <h2 color="white">Email</h2>
+              </label>
+              <input name="email" type="text" />
+            </div>
+            <div>
+              <label htmlFor="password">
+                <h2 color="white">password</h2>
+              </label>
+              <input name="password" type="password" />
+            </div>
+            <div>
+              <button type="submit">
+                <h2>{displayName}</h2>
+              </button>
+            </div>
+            {error && error.response && <div> {error.response.data} </div>}
+          </form> */}
+        <Avatar className={styles.avatar}>
+          <LockIcon />
+        </Avatar>
+        <Typography variant="headline" flex-grow="1">
+          Sign in
+        </Typography>
+        <form className={styles.form}>
+          <FormControl margin="normal" required flex-grow="1">
+            <InputLabel htmlFor="email">Email Address</InputLabel>
+            <Input id="email" name="email" autoComplete="email" autoFocus />
+          </FormControl>
+          <FormControl margin="normal" required>
+            <InputLabel htmlFor="password">Password</InputLabel>
+            <Input
+              name="password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+          </FormControl>
+          <Button
+            type="submit"
+            variant="raised"
+            color="primary"
+            className={styles.submit}
+          >
+            Sign in
+          </Button>
+        </form>
+        {/* <a href="/auth/goodreads">
+            <h2 className="logForm">{displayName} with goodreads</h2>
+          </a> */}
+      </Paper>
+    </main>
   )
 }
 

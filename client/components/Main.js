@@ -32,19 +32,8 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import ReportIcon from '@material-ui/icons/Report'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-// import {mailFolderListItems, otherMailFolderListItems} from './tileData'
-// const styles = {
-//   root: {
-//     flexGrow: 1
-//   },
-//   flex: {
-//     flex: 1
-//   },
-//   menuButton: {
-//     marginLeft: -12,
-//     marginRight: 20
-//   }
-// }
+import Navbar from './navbar'
+
 const drawerWidth = 240
 
 const styles = theme => ({
@@ -58,60 +47,85 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1
-    // transition: theme.transitions.create(['width', 'margin'], {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen
-    // })
-  },
-  // appBarShift: {
-  //   marginLeft: drawerWidth,
-  //   width: `calc(100% - ${drawerWidth}px)`,
-  //   transition: theme.transitions.create(['width', 'margin'], {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.enteringScreen
-  //   })
-  // },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 36
-  },
-  hide: {
-    display: 'none'
   },
   drawerPaper: {
     position: 'relative',
-    // whiteSpace: 'nowrap',
     width: drawerWidth
-    // transition: theme.transitions.create('width', {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.enteringScreen
-    // })
-  },
-  // drawerPaperClose: {
-  //   overflowX: 'hidden',
-  //   transition: theme.transitions.create('width', {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.leavingScreen
-  //   }),
-  //   width: theme.spacing.unit * 7,
-  //   [theme.breakpoints.up('sm')]: {
-  //     width: theme.spacing.unit * 9
-  //   }
-  // },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    // justifyContent: 'flex-end',
-    // padding: '0 8px',
-    ...theme.mixins.toolbar
   },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
-    minWidth: 0
-  }
+    minWidth: 0 // So the Typography noWrap works
+  },
+  toolbar: theme.mixins.toolbar
 })
+
+// const styles = theme => ({
+//   root: {
+//     // flexGrow: 1,
+//     // height: 440,
+//     zIndex: -1,
+//     overflow: 'hidden',
+//     position: 'relative',
+//     display: 'flex'
+//   },
+//   appBar: {
+//     zIndex: -1
+//     // transition: theme.transitions.create(['width', 'margin'], {
+//     //   easing: theme.transitions.easing.sharp,
+//     //   duration: theme.transitions.duration.leavingScreen
+//     // })
+//   },
+//   appBarShift: {
+//     marginLeft: drawerWidth,
+//     width: `calc(100% - ${drawerWidth}px)`,
+//     transition: theme.transitions.create(['width', 'margin'], {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.enteringScreen
+//     })
+//   },
+//   menuButton: {
+//     marginLeft: 12,
+//     marginRight: 36
+//   },
+//   hide: {
+//     display: 'none'
+//   },
+//   drawerPaper: {
+//     position: 'relative',
+//     whiteSpace: 'nowrap',
+//     width: drawerWidth
+//     // transition: theme.transitions.create('width', {
+//     //   easing: theme.transitions.easing.sharp,
+//     //   duration: theme.transitions.duration.enteringScreen
+//     // })
+//   },
+//   // drawerPaperClose: {
+//   //   // overflowX: 'hidden',
+//   //   // transition: theme.transitions.create('width', {
+//   //   //   easing: theme.transitions.easing.sharp,
+//   //   //   duration: theme.transitions.duration.leavingScreen
+//   //   // }),
+//   //   width: theme.spacing.unit * 7,
+//   //   [theme.breakpoints.up('sm')]: {
+//   //     width: theme.spacing.unit * 9
+//   //   }
+//   // },
+//   toolbar: {
+//     // display: 'flex',
+//     // alignItems: 'center',
+//     // justifyContent: 'flex-end',
+//     padding: '0 8px',
+//     ...theme.mixins.toolbar
+//   },
+//   content: {
+//     flexGrow: 1,
+//     backgroundColor: theme.palette.background.default,
+//     padding: theme.spacing.unit * 3,
+//     minWidth: 0
+//   }
+// })
 
 // const theme = createMuiTheme({palette: {type: 'dark'}})
 
@@ -132,30 +146,28 @@ class Main extends React.Component {
     return (
       // <MuiThemeProvider theme={theme}>
       <div className={styles.root}>
-        <AppBar
+        {/* <AppBar
           position="absolute"
           className={classNames(
             styles.appBar,
             this.state.open && styles.appBarShift
           )}
-        >
-          <Toolbar disableGutters={!this.state.open}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(
-                styles.menuButton,
-                this.state.open && styles.hide
-              )}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="title" color="inherit" noWrap>
-              Mini variant drawer
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        > */}
+        <Toolbar>
+          {/* //disableGutters={!this.state.open}> */}
+          <IconButton
+            color="inherit"
+            aria-label="Open drawer"
+            onClick={this.handleDrawerOpen}
+            className={classNames(
+              styles.menuButton,
+              this.state.open && styles.hide
+            )}
+          />
+          <MenuIcon />
+          {/* </IconButton> */}
+        </Toolbar>
+        {/* </AppBar> */}
         <Drawer
           variant="permanent"
           classes={{
@@ -167,94 +179,69 @@ class Main extends React.Component {
           open={this.state.open}
         >
           <div className={styles.toolbar}>
-            <IconButton onClick={this.handleDrawerClose}>
-              {/* {theme.direction === 'rtl' ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )} */}
-            </IconButton>
+            <IconButton onClick={this.handleDrawerClose} />
           </div>
           <List>
-            {/* <Divider> */}
-            <ListItem button component={Link} to="/">
+            <Divider inset />
+            <ListItem component={Link} to="/">
               <ListItemIcon>
                 <HomeTwoToneIcon />
               </ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
-            <li>
-              <Divider inset />
-            </li>
-            <ListItem button component={Link} to="/books">
+            <Divider inset />
+            <ListItem component={Link} to="/books">
               <ListItemIcon>
                 <BookIcon />
               </ListItemIcon>
               <ListItemText primary="My Books" />
             </ListItem>
-            <li>
-              <Divider inset />
-            </li>
-
-            <ListItem button component={Link} to="/Calender">
+            <Divider inset />
+            <ListItem component={Link} to="/Calender">
               <ListItemIcon>
                 <CalendarTodayIcon />
               </ListItemIcon>
               <ListItemText primary="Upcoming Releases" />
             </ListItem>
-
-            <li>
-              <Divider inset />
-            </li>
-
-            <ListItem button component={Link} to="/MyQuotes">
+            <Divider inset />
+            <ListItem component={Link} to="/MyQuotes">
               <ListItemIcon>
-                <FormatQuoteTwoToneIcon secondary />
+                <FormatQuoteTwoToneIcon secondary="true" />
               </ListItemIcon>
               <ListItemText primary="MyQuotes" />
             </ListItem>
-
-            <li>
-              <Divider inset />
-            </li>
-
-            <ListItem button component={Link} to="/MyQuotes">
+            <Divider inset />
+            <ListItem component={Link} to="/MyQuotes">
               <ListItemIcon>
                 <ImportContactsIcon />
               </ListItemIcon>
               <ListItemText primary="MyNotes" />
             </ListItem>
-
-            <li>
-              <Divider inset />
-            </li>
-            <ListItem button component={Link} to="/MyQuotes">
+            <Divider inset />
+            <ListItem component={Link} to="/MyQuotes">
               <ListItemIcon>
                 <PollIcon />
               </ListItemIcon>
               <ListItemText primary="ListTopia" />
             </ListItem>
-
-            <li>
-              <Divider inset />
-            </li>
-            <ListItem button component={Link} to="/recommend">
+            <Divider inset />
+            <ListItem component={Link} to="/recommend">
               <ListItemIcon>
                 <SendIcon />
               </ListItemIcon>
               <ListItemText primary="Recommend to a friend!" />
             </ListItem>
-            {/* </Divider> */}
+            <Divider inset />
           </List>
         </Drawer>
         <main className={styles.content}>
           <div className={styles.toolbar} />
-          <Typography noWrap>
+          {/* <Typography noWrap>
             {'You think water moves fast? You should see ice.'}
-          </Typography>
+          </Typography> */}
         </main>
       </div>
-      /* /* </MuiThemeProvider> */
+      // </MuiThemeProvider>
     )
   }
 }

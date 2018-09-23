@@ -2,7 +2,7 @@ const passport = require('passport')
 const router = require('express').Router()
 // const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const GoodreadsStrategy = require('passport-goodreads').Strategy
-const {User} = require('../db/models')
+// const {User} = require('../db/models')
 module.exports = router
 
 /**
@@ -37,9 +37,10 @@ if (!process.env.GOODREADS_KEY || !process.env.GOODREADS_SECRET) {
     // },
     (token, tokenSecret, profile, done) => {
       // (token, refreshToken, profile, done) => {
+      console.log(token, profile)
       const goodreadsId = profile.id
       const name = profile.displayName
-      const email = profile.emails[0].value
+      const email = profile.email
 
       User.findOrCreate({
         where: {goodreadsId},
@@ -70,13 +71,26 @@ if (!process.env.GOODREADS_KEY || !process.env.GOODREADS_SECRET) {
 
   // passport.use(strategy)
 
-  router.get('/', passport.authenticate('goodReads', {scope: 'email'}))
+  router.get('/auth/goodreads', passport.authenticate('goodreads'))
 
   router.get(
-    '/callback',
-    passport.authenticate('goodReads', {
+    '/auth/goodreads/callback',
+    passport.authenticate('goodreads', {
       successRedirect: '/home',
       failureRedirect: '/login'
-    })
+    }),
+    function(req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/')
+    }
   )
+  // router.get('/', passport.authenticate('goodreads', {scope: 'email'}))
+
+  // router.get(
+  //   '/callback',
+  //   passport.authenticate('goodreads', {
+  //     successRedirect: '/home',
+  //     failureRedirect: '/login'
+  //   })
+  // )
 }

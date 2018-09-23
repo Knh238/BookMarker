@@ -73,6 +73,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
+import Button from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Switch from '@material-ui/core/Switch'
@@ -84,13 +85,26 @@ import Main from './Main'
 import {fade} from '@material-ui/core/styles/colorManipulator'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import {createMuiTheme} from '@material-ui/core/styles'
+import Divider from '@material-ui/core/Divider'
 const theme = createMuiTheme({palette: {type: 'dark'}})
 const styles = {
-  button: {
-    primary: '#ff00ff'
+  root: {
+    display: 'flex'
   },
+  button: {
+    // display: 'flex'
+    // justifycontent: 'spacebetween'
+    // backgroundcolor: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+  },
+
   grow: {
     flexGrow: 1
+  },
+
+  links: {
+    position: 'relative'
+    // display: 'flex',
+    // justifycontent: 'spacebetween'
   },
   menuButton: {
     marginLeft: -12,
@@ -139,102 +153,99 @@ class Navbar extends React.Component {
     const open = Boolean(anchorEl)
 
     return (
-      // <MuiThemeProvider theme={theme}>
-      <div className={styles.root}>
-        <MuiThemeProvider theme={theme}>
-          <FormGroup color="primary">
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={auth}
-                  onChange={this.handleChange}
-                  aria-label="LoginSwitch"
+      <div width="300%">
+        {/* <MuiThemeProvider theme={theme}> */}
+        <AppBar position="relative">
+          <Toolbar className="blueG">
+            <IconButton
+              // className={styles.menuButton}
+              color="inherit"
+              onClick={this.onButtonClick}
+              aria-label="Menu"
+            >
+              {this.state.showComponent ? <Main /> : null}
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="display3"
+              color="inherit"
+              // className={styles.grow}
+              centered="true"
+            >
+              BookMarker
+            </Typography>
+            <Divider />
+            {this.state.isLoggedIn ? (
+              <div className="forceR">
+                <IconButton
+                  aria-owns={open ? 'menu-appbar' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                </Menu>
+                <FormGroup color="primary">
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={auth}
+                        onChange={this.handleChange}
+                        aria-label="LoginSwitch"
+                        color="primary"
+                      />
+                    }
+                    label={auth ? 'Logout' : 'Login'}
+                  />
+                </FormGroup>
+              </div>
+            ) : (
+              <div className={styles.links}>
+                <Divider />
+                {/* The navbar will show these links before you log in */}
+                <Button
+                  variant="contained"
+                  size="medium"
+                  // background="linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
+                  // onClick={this.handleMenu}
                   color="primary"
-                />
-              }
-              label={auth ? 'Logout' : 'Login'}
-            />
-          </FormGroup>
-          <AppBar position="static">
-            <Toolbar className="blueG">
-              <IconButton
-                // className={styles.menuButton}
-                color="inherit"
-                onClick={this.onButtonClick}
-                aria-label="Menu"
-              >
-                {' '}
-                {this.state.showComponent ? <Main /> : null}
-                <MenuIcon />
-              </IconButton>
-              <Typography
-                variant="title"
-                color="inherit"
-                // className={styles.grow}
-                // className="alignR"
-              >
-                BookMarker
-              </Typography>
-              {/* {auth && (
-                <div aligncontent="flex-end">
-                  <IconButton
-                    aria-owns={open ? 'menu-appbar' : null}
-                    aria-haspopup="true"
-                    onClick={this.handleMenu}
-                    color="inherit"
-                  >
-                    <AccountCircle className="alignR" />
-                  </IconButton>
-                  <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right'
-                    }}
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right'
-                    }}
-                    open={open}
-                    onClose={this.handleClose}
-                  >
-                    {' '}      {/* <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={this.handleClose}>My account</MenuItem> */}
-              {/* </Menu> */}
-              {this.state.isLoggedIn ? (
-                <div className="btn-group-sm">
-                  {/* The navbar will show these links after you log in */}
-                  <Link to="/home" className="btn btn-outline-primary">
-                    Home
+                >
+                  <Link to="/login" className="linkB">
+                    <h3>Login</h3>
                   </Link>
-                  <a
-                    href="#"
-                    onClick={handleClick}
-                    className="btn btn-outline-primary"
-                  >
-                    Logout
-                  </a>
-                </div>
-              ) : (
-                <div className="btn-group-sm">
-                  {/* The navbar will show these links before you log in */}
-                  <Link to="/login" className="btn btn-outline-primary">
-                    Login
-                  </Link>
+                </Button>
+                {/* <IconButton
+                  aria-owns={open ? 'menu-appbar' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
                   <Link to="/signup" className="btn btn-primary">
                     Sign Up!
                   </Link>
-                </div>
-              )}
-              {/* <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={this.handleClose}>My account</MenuItem> */}
-              {/* </Menu> */}
-              {/* </div> */}
-              )}
-            </Toolbar>
-          </AppBar>
-        </MuiThemeProvider>
+                </IconButton> */}
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
+        {/* </MuiThemeProvider> */}
       </div>
     )
   }
