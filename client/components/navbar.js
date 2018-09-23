@@ -225,8 +225,6 @@ class Navbar extends React.Component {
               </div>
             ) : (
               <div className={styles.links}>
-                <Divider />
-
                 <Button
                   variant="contained"
                   size="medium"

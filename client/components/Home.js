@@ -96,7 +96,7 @@ class Home extends React.Component {
           height="50%"
           image="/bluesplotches.jpg"
           title="Contemplative Reptile"
-          fullwidth
+          fullwidth="true"
         />
         <CardContent>
           <Typography variant="display2">

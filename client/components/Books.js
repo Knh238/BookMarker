@@ -9,6 +9,7 @@ import {createMuiTheme} from '@material-ui/core/styles'
 import MenuItem from '@material-ui/core/MenuItem'
 import TextField from '@material-ui/core/TextField'
 import getList from '../store/userReducer'
+const request = require('request')
 
 const styles = theme => ({
   container: {
@@ -26,15 +27,66 @@ const styles = theme => ({
     width: 200
   }
 })
-
+// request.get(
+//   'https://www.goodreads.com/review/list/5900639',
+//   {json: true},
+//   (err, res, body) => {
+//     if (err) {
+//       return console.log(err)
+//     }
+//     console.log(body.url)
+//     console.log(body.explanation)
+//   }
+// )
 // const theme = createMuiTheme({palette: {type: 'dark'}})
 class Books extends React.Component {
   // constructor(props) {
   //   super(props)
-  //   this.state = {list: props.list}
+  //   // this.state = {list: {}}
   // }
   // const {classes} = this.props
+  //   var config = {
+  //     headers: {'Content-Type': 'text/xml'}
+  //  };
 
+  // request('https://www.goodreads.com/review/list/5900639', { json: true }, (err, res, body) => {
+  //   if (err) { return console.log(err); }
+  //   console.log(body.url);
+  //   console.log(body.explanation);
+  // });
+
+  // request
+  // ('https://www.goodreads.com/review/list/5900639', { json: true }, (err, res, body) => {
+  //   if (err) { return console.log(err); }
+  //   console.log(body.url);
+  //   console.log(body.explanation);
+  // });
+  //  axios.put(myUrl, xmlString, config);
+  //   componentDidlMount() {
+  //     // var config = {
+  //     //   headers: {'Content-Type': 'text/xml', responseType: 'json'}
+  //     // }
+  // // request('https://www.goodreads.com/review/list/5900639', { json: true }, (err, res, body) => {
+  // //   if (err) { return console.log(err); }
+  // //   console.log(body.url);
+  // //   console.log(body.explanation);
+  // // });
+  //     // const {data} = axios.get(
+  //     //   'https://www.goodreads.com/review/list/5900639',
+  //     //   config
+  //     // )
+  //     //'https://www.goodreads.com/series/52637-charley-davidson'
+  //     //id, key
+  //     // const things = data.json.stringify()
+  //     // console.log(data.headers)
+
+  //     // <tbody id="booksBody">
+  //     // dispatch(this.props.gotList(data))
+  //     this.setState({list: data})
+  //   }
+  //   catch(err) {
+  //     console.error(err)
+  //   }
   render() {
     // console.log('this props'.this.props)
     console.log('this state', this.props)

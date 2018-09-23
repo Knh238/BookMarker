@@ -18,5 +18,5 @@ class App extends Component {
     )
   }
 }
-export default App
-// export default withStyles(styles)(withRouter(App))
+//export default App
+export default withRouter(App)

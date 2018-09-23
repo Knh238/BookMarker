@@ -12,7 +12,7 @@ import {createMuiTheme} from '@material-ui/core/styles'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 // import 'react-infinite-calendar/styles.css'
 // establishes socket connection
-// import './socket'
+import './socket'
 
 const theme = createMuiTheme({palette: {type: 'dark'}})
 

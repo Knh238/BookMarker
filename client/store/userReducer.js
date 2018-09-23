@@ -1,8 +1,10 @@
 import axios from 'axios'
 import history from '../history'
-const goodreads = require('goodreads-api-node')
+// const goodReadsJSONResponse = require(goodreads - json - api)
+// const goodreads = require('goodreads-api-node')
+// const request = require('request')
 // getUserInfo(userID)
-// getUsersShelves(userID)
+// getUsersShelves(userID)x
 /**
  * ACTION TYPES
  */
@@ -22,6 +24,22 @@ const getUser = user => ({type: GET_USER, user})
 const removedUserFromLogin = () => ({type: REMOVED_USER_FROM_LOGIN})
 const gotList = books => ({type: GOT_LIST, books})
 
+// request.get(
+//   'https://www.goodreads.com/series/52637',
+
+//   (err, res, body) => {
+//     if (err) {
+//       return console.log(err)
+//     }
+//     console.log(body.url)
+//     console.log(body.explanation)
+//     // var info = JSON.stringify(body)
+//     // console.log(body.url)
+//     var info = body
+//     console.log('body:', info)
+//     // console.log(body.explanation)
+//   }
+// )
 /**
  * THUNK CREATORS
  */
@@ -71,20 +89,37 @@ export const auth = (email, password, method) => async dispatch => {
     console.error(dispatchOrHistoryErr)
   }
 }
+// const myCredentials = {
+//   key: 'process.env.GOODREADS_KEY',
+//   secret: 'process.env.GOODREADS_SECRET'
+// }
+
+// const gr = goodreads(myCredentials)
+
 export const getlist = () => async dispatch => {
   try {
     // const res = await axios.get(
     //   'https://www.goodreads.com/review/list/5900639key=g8lgxPvHf4zuzCQqE7NQ'
     // )
-    const {data} = await axios.get(
-      'https://www.goodreads.com/series/show/ID.xml',
-      {ID: 52637}
-    )
+    // const {data} = await axios.get(
+    //   'https://www.goodreads.com/series/52637-charley-davidson'
+    // )
     //52637
-    goodreads.getUsersShelves(id)
+    // goodreads.getUsersShelves(id)
     // 52637-charley-davidson
-    //www.goodreads.com/shelf/list.xml
 
+    // request.get(
+    //   'https://www.goodreads.com/review/list/5900639',
+    //   {json: true},
+    //   (err, res, body) => {
+    //     if (err) {
+    //       return console.log(err)
+    //     }
+    //     console.log(body.url)
+    //     console.log(body.explanation)
+    //   }
+    // )
+    // const response = await goodreads.getBooksByAuthor('1036615')
     // https: key
     // user_id
     //     See a series
@@ -92,9 +127,9 @@ export const getlist = () => async dispatch => {
     // URL: https://www.goodreads.com/series/show/ID.xml    (sample url)
     // HTTP method: GET
 
-    console.log(data)
+    console.log(response)
     // <tbody id="booksBody">
-    dispatch(gotList(data))
+    dispatch(gotList(response))
   } catch (err) {
     console.error(err)
   }
