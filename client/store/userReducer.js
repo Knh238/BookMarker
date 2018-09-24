@@ -1,11 +1,7 @@
 import axios from 'axios'
 import history from '../history'
 // const request = require('request')
-// var convert = require('xml-js')
-// const goodreads = require('goodreads-api-node')
 
-// getUserInfo(userID)
-// getUsersShelves(userID)x
 /**
  * ACTION TYPES
  */

@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
 
 const styles = {
   card: {
@@ -37,14 +38,15 @@ function MyNotes(props) {
         </Typography>
         <Typography variant="headline" component="h2">
           Things I liked about this book
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+          <TextField
+            id="outlined-multiline-flexible"
+            label="Multiline"
+            multiline
+            rowsMax="4"
+            margin="normal"
+            helperText="thoughts?"
+            variant="outlined"
+          />
         </Typography>
       </CardContent>
       <CardActions>
@@ -59,17 +61,3 @@ MyNotes.propTypes = {
 }
 
 export default withStyles(styles)(MyNotes)
-
-/* <TextField
-  id="outlined-number"
-  label="Number"
-  value={this.state.age}
-  onChange={this.handleChange('age')}
-  type="number"
-  className={classes.textField}
-  InputLabelProps={{
-    shrink: true
-  }}
-  margin="normal"
-  variant="outlined"
-/> */

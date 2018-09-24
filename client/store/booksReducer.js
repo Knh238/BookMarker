@@ -34,11 +34,14 @@ const addedDates = dates => ({
 
 export const getSeries = id => dispatch => {
   request.get(
-    `https://www.goodreads.com/series/show?key=g8lgxPvHf4zuzCQqE7NQ&id=${id}.xml`,
+    `https://www.goodreads.com/series/show?key=${
+      process.env.SESSION_KEY
+    }&id=${id}.xml`,
     (err, res, body) => {
       if (err) {
         return console.log(err)
       }
+
       console.log(body.url)
       console.log(body.explanation)
       var xml = body
@@ -58,25 +61,12 @@ export const getSeries = id => dispatch => {
     }
   )
 }
-// getSeries('52637')
-// Get the books on a members shelf
-// Get the books on a members shelf. Customize the feed with the below variables. Viewing members with profiles who have set them as visible to members only or just their friends requires using OAuth.
-// URL: https://www.goodreads.com/review/list?v=2    (sample url)
-// HTTP method: GET
-// Parameters:
-// v: 2
-// id: Goodreads id of the user
-// shelf: read, currently-reading, to-read, etc. (optional)
-
-// // per_page: 1-200 (optional)
-// // key: Developer key (required).
-
-// https://www.goodreads.com/review/list/5900639?key=g8lgxPvHf4zuzCQqE7NQ&v=2&self=demo.xml
-// 5900639
 
 export const getUserList = id => dispatch => {
   request.get(
-    `https://www.goodreads.com/review/list/${id}.xml?shelf=demo&key=g8lgxPvHf4zuzCQqE7NQ&v=2?`,
+    `https://www.goodreads.com/review/list/${id}.xml?shelf=demo&key=${
+      process.env.SESSION_KEY
+    }&v=2?`,
     (err, res, body) => {
       if (err) {
         return console.log(err)
@@ -100,57 +90,7 @@ export const getUserList = id => dispatch => {
     }
   )
 }
-// export const getQuotes = id => dispatch => {
-//   request.get(
-//     `https://www.goodreads.com/series/show?key=g8lgxPvHf4zuzCQqE7NQ&id=${id}.xml`,
-//     (err, res, body) => {
-//       if (err) {
-//         return console.log(err)
-//       }
-//       console.log(body.url)
-//       console.log(body.explanation)
-//       var xml = body
-//       var result1 = convert.xml2json(xml, {
-//         compact: true,
-//         spaces: 2,
-//         ignoreDoctype: true,
-//         ignoreDeclaration: true
-//       })
-//       // const {series} = result1.series
-//       const resBody = JSON.parse(result1)
-//       const list = resBody.GoodreadsResponse.series
-//       console.log(series)
-//       dispatch(gotQuotes(quotes))
-//       // return result1
-//     }
-//   )
-// }
-// export const getDates = id => dispatch => {
-//   request.get(
-//     `https://www.goodreads.com/series/show?key=g8lgxPvHf4zuzCQqE7NQ&id=${id}.xml`,
-//     (err, res, body) => {
-//       if (err) {
-//         return console.log(err)
-//       }
-//       console.log(body.url)
-//       console.log(body.explanation)
-//       var xml = body
-//       var result1 = convert.xml2json(xml, {
-//         compact: true,
-//         spaces: 2,
-//         ignoreDoctype: true,
-//         ignoreDeclaration: true
-//       })
-//       // const {series} = result1.series
-//       const resBody = JSON.parse(result1)
-//       const list = resBody.GoodreadsResponse.series
-//       console.log(series)
-//       dispatch(gotDates(dates))
-//       // return result1
-//     }
-//   )
-// }
-// getSeries('52637')
+
 const initialState = {
   books: [],
   userList: [],
@@ -187,4 +127,5 @@ const booksReducer = (state = initialState, action) => {
       return state
   }
 }
+
 export default booksReducer

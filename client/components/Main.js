@@ -29,6 +29,7 @@ import DraftsIcon from '@material-ui/icons/Drafts'
 import StarIcon from '@material-ui/icons/Star'
 import SendIcon from '@material-ui/icons/Send'
 import MailIcon from '@material-ui/icons/Mail'
+import LoyaltyIcon from '@material-ui/icons/Loyalty'
 import DeleteIcon from '@material-ui/icons/Delete'
 import ReportIcon from '@material-ui/icons/Report'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
@@ -136,14 +137,14 @@ class Main extends React.Component {
               <ListItemText primary="MyQuotes" />
             </ListItem>
             <Divider inset />
-            <ListItem component={Link} to="/MyQuotes">
+            <ListItem component={Link} to="/MyNotes">
               <ListItemIcon>
                 <ImportContactsIcon />
               </ListItemIcon>
               <ListItemText primary="MyNotes" />
             </ListItem>
             <Divider inset />
-            <ListItem component={Link} to="/MyQuotes">
+            <ListItem component={Link} to="/Listopia">
               <ListItemIcon>
                 <PollIcon />
               </ListItemIcon>
@@ -155,6 +156,13 @@ class Main extends React.Component {
                 <SendIcon />
               </ListItemIcon>
               <ListItemText primary="Recommend to a friend!" />
+            </ListItem>
+            <Divider inset />
+            <ListItem component={Link} to="/ByTag">
+              <ListItemIcon>
+                <LoyaltyIcon />
+              </ListItemIcon>
+              <ListItemText primary="My Tags" />
             </ListItem>
             <Divider inset />
           </List>

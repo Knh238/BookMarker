@@ -16,8 +16,8 @@ import {
   MyQuotes,
   Tags,
   MyNotes,
-  Tab,
-  SampleSeries
+  SampleSeries,
+  Listopia
 } from './components'
 import {me} from './store'
 
@@ -43,7 +43,7 @@ class Routes extends Component {
         <Route exact path="/MyNotes" component={MyNotes} />
         <Route exact path="/ByTag" component={Tags} />
         <Route exact path="/sampleSeries" component={SampleSeries} />
-        <Route exact path="/Tab" component={Tab} />
+        <Route exact path="/Tab" component={Listopia} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         {isLoggedIn && (

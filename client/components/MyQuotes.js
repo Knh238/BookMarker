@@ -15,6 +15,7 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import Chip from '@material-ui/core/Chip'
 
 const styles = theme => ({
   root: {
@@ -41,7 +42,7 @@ const tileData = [
     text:
       'It’s a strange new world out there and the rules have changed: It’s every princess for herself',
 
-    size: 'display3',
+    size: 'display2',
     color: 'primary'
   },
 
@@ -77,7 +78,7 @@ const tileData = [
     author: ' Darynda Jones ',
     text:
       '“You know how I’ve never told you certain things, because I didn’t want you to have to seek therapy?”',
-    size: 'display3'
+    size: 'display2'
   },
   {
     img: 'https://cdn140.picsart.com/274618778019201.jpg?c480x480',
@@ -110,7 +111,7 @@ const tileData = [
     author: 'Christine Feehan',
     text:
       'YOU know that song by Taylor Swift, ‘Wildest Dreams’?” Sonia asked. She bit off the end of her fried zucchini. “That’s Joshua. Tall. Handsome as hell. Okay, gorgeous. But he has the bad-boy thing down. Maybe more like badass. Either way, it isn’t going to end well for me.”',
-    size: 'display1',
+    size: 'headline',
     color: 'primary'
   },
   {
@@ -136,11 +137,19 @@ const tileData = [
     author: 'Karen Marie Moning',
     text:
       '“Sometimes, Ms. Lane,” he said, “one must break with one’s past to embrace one’s future. It is never an easy thing to do. It is one of the distinguishing characteristics between survivors and victims. Letting go of what was, to survive what is.” He slid the last bolt',
-    size: 'display1',
-    color: 'primary'
+    size: 'headline'
   }
 ]
-
+const stylesC = theme => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap'
+  },
+  chip: {
+    margin: theme.spacing.unit
+  }
+})
 function MyQuotes(props) {
   const {classes} = props
 
@@ -215,8 +224,3 @@ MyQuotes.propTypes = {
   classes: PropTypes.object.isRequired
 }
 export default connect()(MyQuotes)
-
-// export default withStyles(styles)(MyQuotes)
-{
-  /* <div style="border: 2px solid #EBE8D5; border-radius:10px; padding: 0px 7px 0px 7px;"><h3 style=""><a href="https://www.goodreads.com/user/show/5900639-kristin-harper" style="text-decoration: none;color:#aaa;font-family:georgia,serif;font-style:italic;" rel="nofollow">Kristin’s quotes</a></h3><br/><div id="gr_quote_body"></div><script src="https://www.goodreads.com/quotes/widget/5900639-kristin-harper?v=2" type="text/javascript"></script><div style="text-align: right;"><a href="https://www.goodreads.com/quotes" style="color: #382110; text-decoration: none; font-size: 10px;" rel="nofollow">Goodreads Quotes</a></div></div> */
-}
