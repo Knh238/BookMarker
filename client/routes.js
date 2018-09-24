@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import getList from './store/userReducer'
+
+// import getList from './store/userReducer'
+//import getUserList from './store/booksReducer'
 import {
   Login,
   Signup,
@@ -14,7 +16,8 @@ import {
   MyQuotes,
   Tags,
   MyNotes,
-  Tab
+  Tab,
+  SampleSeries
 } from './components'
 import {me} from './store'
 
@@ -24,7 +27,7 @@ import {me} from './store'
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
-    this.props.gotList()
+    // this.props.gotUserList()
   }
   render() {
     const {isLoggedIn} = this.props
@@ -39,6 +42,7 @@ class Routes extends Component {
         <Route exact path="/MyQuotes" component={MyQuotes} />
         <Route exact path="/MyNotes" component={MyNotes} />
         <Route exact path="/ByTag" component={Tags} />
+        <Route exact path="/sampleSeries" component={SampleSeries} />
         <Route exact path="/Tab" component={Tab} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
@@ -61,8 +65,8 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     ...state,
-    isLoggedIn: !!state.current,
-    list: state.list
+    isLoggedIn: !!state.user.current
+    //userList: state.books.userList
     // category: state.product.category
   }
 }
@@ -71,8 +75,8 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
-    },
-    gotList: () => dispatch(getList)
+    }
+    // gotUserList: () => dispatch(getUserList())
   }
 }
 Routes.propTypes = {

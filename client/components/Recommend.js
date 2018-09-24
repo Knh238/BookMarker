@@ -1,26 +1,3 @@
-// import React from 'react'
-// import PropTypes from 'prop-types'
-// import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-// import getMuiTheme from 'material-ui/styles/getMuiTheme'
-// import Table from 'material-ui/AppBar'
-
-// class Recommend extends React.Component {
-//   render() {
-//     return (
-//       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-//         <Table title="my recommendations for" />
-//       </MuiThemeProvider>
-//     )
-//   }
-// }
-
-// Recommend.propTypes = {
-//   classes: PropTypes.object.isRequired
-// }
-
-// export default Recommend
-// --------------
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
@@ -42,6 +19,8 @@ import Tooltip from '@material-ui/core/Tooltip'
 import DeleteIcon from '@material-ui/icons/Delete'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import {lighten} from '@material-ui/core/styles/colorManipulator'
+import MenuItem from '@material-ui/core/MenuItem'
+import TextField from '@material-ui/core/TextField'
 
 let counter = 0
 function createData(name, calories, fat, carbs, protein) {
@@ -54,12 +33,17 @@ const columnData = [
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: 'Dessert (100g serving)'
+    label: 'Book'
   },
-  {id: 'calories', numeric: true, disablePadding: false, label: 'Calories'},
-  {id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)'},
-  {id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)'},
-  {id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)'}
+  {
+    id: 'pub',
+    numeric: true,
+    disablePadding: false,
+    label: 'publication date'
+  },
+  {id: 'author', numeric: false, disablePadding: false, label: 'author'},
+  {id: 'link', numeric: false, disablePadding: false, label: 'link'},
+  {id: 'Why?', numeric: false, disablePadding: false, label: 'why?'}
 ]
 
 class EnhancedTableHead extends React.Component {
@@ -213,20 +197,32 @@ class EnhancedTable extends React.Component {
       orderBy: 'calories',
       selected: [],
       data: [
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Donut', 452, 25.0, 51, 4.9),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-        createData('Honeycomb', 408, 3.2, 87, 6.5),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Jelly Bean', 375, 0.0, 94, 0.0),
-        createData('KitKat', 518, 26.0, 65, 7.0),
-        createData('Lollipop', 392, 0.2, 98, 0.0),
-        createData('Marshmallow', 318, 0, 81, 2.0),
-        createData('Nougat', 360, 19.0, 9, 37.0),
-        createData('Oreo', 437, 18.0, 63, 4.0)
-      ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
+        createData(
+          'First Grave to the Right',
+          2011,
+          'Darynda Jones',
+          '--',
+          4.3
+        ),
+        createData('Magic Bites', 2007, 'Ilona Andrews', '--', 4.9),
+        createData('Darkfever', 2006, 'Karen Marie Moning', '--', 6.0),
+        createData('Some Girls Bite', 2009, 'Chloe Neil', '--', 4.0),
+        createData('Heart of Obsidian', 2014, 'Nalini Singh', '--', 3.9),
+        createData('Dragon Bound', 2011, 'Thea Harrison', '--', 6.5),
+        createData('Born of Fire', 1996, 'Sherrilyn Kenyon', '--', 4.3),
+        createData('Wild Cat', 2014, 'Christine Feehan', '--', 0.0),
+        createData('Shadow Rider', 2016, 'Christine Feehan', '--', 7.0),
+        createData(
+          'Second Grave on the Left',
+          2011,
+          'Darynda Jones',
+          '--',
+          0.0
+        ),
+        createData('Angels Blood', 2009, 'Nalini Singh', '--', 2.0),
+        createData('Magic Breaks', 2014, 'Ilona Andrews', '--', 37.0),
+        createData('Bloodfever', 2007, 'Karen Marie Moning', '--', 4.0)
+      ].sort((a, b) => (a.pub < b.pub ? -1 : 1)),
       page: 0,
       rowsPerPage: 5
     }
@@ -330,7 +326,7 @@ class EnhancedTable extends React.Component {
                       <TableCell numeric>{n.calories}</TableCell>
                       <TableCell numeric>{n.fat}</TableCell>
                       <TableCell numeric>{n.carbs}</TableCell>
-                      <TableCell numeric>{n.protein}</TableCell>
+                      <TableCell>because..</TableCell>
                     </TableRow>
                   )
                 })}
