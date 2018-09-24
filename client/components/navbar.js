@@ -182,63 +182,65 @@ class Navbar extends React.Component {
               BookMarker
             </Typography>
             <Divider />
-            {this.state.isLoggedIn ? (
-              <div className="forceR">
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                </Menu>
-                <FormGroup color="primary">
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={auth}
-                        onChange={this.handleChange}
-                        aria-label="LoginSwitch"
-                        color="primary"
-                      />
-                    }
-                    label={auth ? 'Logout' : 'Login'}
-                  />
-                </FormGroup>
-              </div>
-            ) : (
-              <div className={styles.links}>
-                <Button
-                  variant="contained"
-                  size="medium"
-                  // onClick={this.handleMenu}
+            {/* {this.state.isLoggedIn ? ( */}
+            <div className="forceR">
+              <IconButton
+                aria-owns={open ? 'menu-appbar' : null}
+                aria-haspopup="true"
+                onClick={this.handleMenu}
+                color="primary"
+              >
+                <AccountCircle color="primary" />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                open={open}
+                onClose={this.handleClose}
+                color="primary"
+              >
+                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+              </Menu>
+              <FormGroup color="primary">
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={auth}
+                      onChange={this.handleChange}
+                      aria-label="LoginSwitch"
+                      color="primary"
+                    />
+                  }
+                  label={auth ? 'Logout' : 'Login'}
                   color="primary"
-                  lastchild="true"
-                  float="right"
-                >
-                  <Link to="/login" className="linkB">
-                    <h3>Login</h3>
-                  </Link>
-                </Button>
-              </div>
-            )}
+                />
+              </FormGroup>
+            </div>
+            // ) : (
+            <div className={styles.links}>
+              <Button
+                variant="contained"
+                size="medium"
+                // onClick={this.handleMenu}
+                color="primary"
+                lastchild="true"
+                float="right"
+              >
+                <Link to="/login" className="linkB">
+                  <h3>Login</h3>
+                </Link>
+              </Button>
+            </div>
+            // )}
           </Toolbar>
         </AppBar>
         {/* </MuiThemeProvider> */}

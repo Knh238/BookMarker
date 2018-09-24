@@ -1,55 +1,3 @@
-// import React from 'react'
-// import PropTypes from 'prop-types'
-
-// import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-// import Table, {
-//   TableBody,
-//   TableCell,
-//   TableHead,
-//   TableRow
-// } from '@material-ui/core/Table'
-// import {createMuiTheme} from '@material-ui/core/styles'
-// import Typography from '@material-ui/core/Typography'
-// const theme = createMuiTheme({palette: {type: 'dark'}})
-
-// class Home extends React.Component {
-//   render() {
-//     return (
-// <MuiThemeProvider theme={theme}>
-// <Typography variant="headline" color="secondary" align="center">
-//   My books
-// </Typography>
-// <Typography variant="headline" color="secondary" align="center">
-//   because girl, your kindle is ON FIYA
-// </Typography>
-
-/* <Table title="my books"> */
-
-/* <Typography variant="title" color="secondary" noWrap>
-            My books
-          </Typography> */
-
-/* <TableHead /> My books!
-          {/* <TableRow>
-              <TableCell key="author">author </TableCell>
-              {/* <TableCell key="genre">genre</TableCell>
-              <TableCell key="title">title</TableCell>
-              <TableCell key="series">series number </TableCell> */
-/* </TableRow>
-          </TableHead> */
-/* <TableBody> */
-/* <TableRow key={`${n.firstName}-${n.lastName}`}>
-              {' '}
-              tba
-              <TableCell> add stuff later</TableCell>
-            </TableRow> */
-/* </TableBody> */
-/* </Table>
-      </MuiThemeProvider>
-    )
-  }
-} */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -99,7 +47,7 @@ class Home extends React.Component {
           fullwidth="true"
         />
         <CardContent>
-          <Typography variant="display2">
+          <Typography variant="display3">
             Because girl, your kindle is ON FI-YA!
           </Typography>
         </CardContent>
