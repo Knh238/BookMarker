@@ -35,7 +35,7 @@ const addedDates = dates => ({
 export const getSeries = id => dispatch => {
   request.get(
     `https://www.goodreads.com/series/show?key=${
-      process.env.SESSION_KEY
+      process.env.GOODREADS_KEY
     }&id=${id}.xml`,
     (err, res, body) => {
       if (err) {
@@ -65,7 +65,7 @@ export const getSeries = id => dispatch => {
 export const getUserList = id => dispatch => {
   request.get(
     `https://www.goodreads.com/review/list/${id}.xml?shelf=demo&key=${
-      process.env.SESSION_KEY
+      process.env.GOODREADS_KEY
     }&v=2?`,
     (err, res, body) => {
       if (err) {

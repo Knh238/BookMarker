@@ -160,7 +160,6 @@ function MyQuotes(props) {
           <ListSubheader component="div">My Fav Quotes</ListSubheader>
         </GridListTile>
         {tileData.map(tile => (
-          // <Typography className='centered'>{tile.text}</Typography>
           <GridListTile key={tile.img}>
             <img src={tile.img} alt={tile.title} />
             <Typography
@@ -182,43 +181,9 @@ function MyQuotes(props) {
           </GridListTile>
         ))}
       </GridList>
-      {/* <div style="border: 2px solid #EBE8D5; border-radius:10px; padding: 0px 7px 0px 7px;">
-        <h3 style="">
-          <a
-            href="https://www.goodreads.com/user/show/5900639-kristin-harper"
-            style="text-decoration: none;color:#aaa;font-family:georgia,serif;font-style:italic;"
-            rel="nofollow"
-          >
-            Kristin’s quotes
-          </a>
-        </h3>
-        <br />
-        <div id="gr_quote_body" />
-        <script
-          src="https://www.goodreads.com/quotes/widget/5900639-kristin-harper?v=2"
-          type="text/javascript"
-        />
-        <div style="text-align: right;">
-          <a
-            href="https://www.goodreads.com/quotes"
-            style="color: #382110; text-decoration: none; font-size: 10px;"
-            rel="nofollow"
-          >
-            Goodreads Quotes
-          </a>
-        </div> */}
-      {/* </div> */}
     </div>
   )
 }
-
-/* <div class="container">
-  <img src="nature.jpg" alt="Norway" style="width:100%;">
-  <div class="text-block"> 
-    <h4>Nature</h4>
-    <p>What a beautiful sunrise</p>
-  </div>
-</div> */
 
 MyQuotes.propTypes = {
   classes: PropTypes.object.isRequired

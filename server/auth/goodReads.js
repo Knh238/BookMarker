@@ -30,11 +30,7 @@ if (!process.env.GOODREADS_KEY || !process.env.GOODREADS_SECRET) {
 
   const strategy = new GoodreadsStrategy(
     goodReadsConfig,
-    // {
-    //   consumerKey: GOODREADS_KEY,
-    //   consumerSecret: GOODREADS_SECRET,
-    //   callbackURL: 'http://127.0.0.1:3000/auth/goodreads/callback'
-    // },
+
     (token, tokenSecret, profile, done) => {
       // (token, refreshToken, profile, done) => {
       console.log(token, profile)
@@ -53,23 +49,6 @@ if (!process.env.GOODREADS_KEY || !process.env.GOODREADS_SECRET) {
     }
   )
   passport.use(strategy)
-  // const strategy = new GoogleStrategy(
-  //   googleConfig,
-  //   (token, refreshToken, profile, done) => {
-  //     const goodReadsId = profile.id
-  //     const name = profile.displayName
-  //     const email = profile.emails[0].value
-
-  //     User.findOrCreate({
-  //       where: {goodReadsId},
-  //       defaults: {name, email}
-  //     })
-  //       .then(([user]) => done(null, user))
-  //       .catch(done)
-  //   }
-  // )
-
-  // passport.use(strategy)
 
   router.get('/auth/goodreads', passport.authenticate('goodreads'))
 
@@ -84,13 +63,4 @@ if (!process.env.GOODREADS_KEY || !process.env.GOODREADS_SECRET) {
       res.redirect('/')
     }
   )
-  // router.get('/', passport.authenticate('goodreads', {scope: 'email'}))
-
-  // router.get(
-  //   '/callback',
-  //   passport.authenticate('goodreads', {
-  //     successRedirect: '/home',
-  //     failureRedirect: '/login'
-  //   })
-  // )
 }
