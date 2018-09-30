@@ -19,17 +19,10 @@ class SampleSeries extends React.Component {
     this.props.gotCurrentSeries('52637')
   }
   render() {
-    // console.log('this props'.this.props)
-    //console.log('this props', this.props)
     console.log(this.props)
     const books = this.props.currentSeries
     console.log('these books', books)
-    // return (
-    // <MuiThemeProvider theme={theme}>
-    // if (books === undefined) {
-    //   return <h1> working on it</h1>
-    // } else {
-    //shelf===undefined?(<div><h1>not here yet</h1></div>):
+
     return (
       <Card key={item.book.id._text}>
         <Typography align="center">{item.book.title._text}</Typography>
@@ -49,33 +42,11 @@ class SampleSeries extends React.Component {
     )
   }
 }
-// import GridList from '@material-ui/core/GridList'
-// import GridListTile from '@material-ui/core/GridListTile'
-// import tileData from './tileData'
-/* <GridList display="flex">
-{shelf.map(item => {
-  return (
-    <GridListTile key={item.book.id._text}>
-      <Typography align="center">{item.book.title._text}</Typography>
-      <Typography align="center">
-        {item.book.authors.author.name._text}
-      </Typography>
 
-      <Typography>
-        {item.book.description._text.slice(13, 200)}
-      </Typography>
-
-      <img src={item.book.image_url._text} />
-    </GridListTile>
-  )
-})}
-</GridList> */
 const mapStateToProps = state => {
   return {
-    // user: state.user,
     ...state,
     user: state.user.current,
-    // id: state.user.current.id,
     series: state.books.currentSeries
   }
 }
@@ -85,8 +56,5 @@ const mapDispatchToProps = dispatch => {
     gotCurrentSeries: id => dispatch(getSeries(id))
   }
 }
-// Books.propTypes = {
-//   classes: PropTypes.object.isRequired
-// }
-//export default connect(mapStateToProps)(Books)
+
 export default connect(mapStateToProps, mapDispatchToProps)(SampleSeries)

@@ -9,9 +9,7 @@ import Routes from './routes'
 class App extends Component {
   render() {
     return (
-      // <CssBaseline />
       <div>
-        {/* <CssBaseline /> */}
         <Navbar />
         <Routes />
       </div>

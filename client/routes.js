@@ -3,15 +3,13 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-// import getList from './store/userReducer'
-//import getUserList from './store/booksReducer'
 import {
   Login,
   Signup,
   UserHome,
   Home,
   Books,
-  Calender,
+  Calendar,
   EnhancedTable,
   MyQuotes,
   Tags,
@@ -36,7 +34,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={Home} />
-        <Route exact path="/Calender" component={Calender} />
+        <Route exact path="/Calendar" component={Calendar} />
         <Route exact path="/Books" component={Books} />
         <Route exact path="/Recommend" component={EnhancedTable} />
         <Route exact path="/MyQuotes" component={MyQuotes} />

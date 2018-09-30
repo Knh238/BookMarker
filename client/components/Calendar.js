@@ -9,33 +9,20 @@ import InfiniteCalendar from 'react-infinite-calendar'
 //import Calendar from 'react-calendar-material'
 import 'react-infinite-calendar/styles.css'
 
-// // // // // const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
-
-const theme = createMuiTheme({palette: {type: 'dark'}})
 class ReleaseDates extends React.Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      events: [
-        {
-          title: 'stackathon presentation',
-          start: Date.now()
-        }
-      ]
-      // releases: {},
-      // date: null
-    }
-    //     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    //     // this.handleDate = this.handleDate.bind(this)
+    // this.state = {
+    //   events: [
+    //     {
+    //       title: 'stackathon presentation',
+    //       start: Date.now()
+    //     }
+    //   ]
+    // }
+    // this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  //   Event {
-  //   title: 'stackathon presentation',
-  //   start: September 24,2018,
-  //   resource?: any,
-  // }
   // handleDate(event, date) {
   //   const {book} = this.event.value
   //   book.release = date
@@ -59,40 +46,20 @@ class ReleaseDates extends React.Component {
     this.setState({date: null})
   }
 
-  //   var lastWeek = new Date(
-  //     today.getFullYear(),
-  //     today.getMonth(),
-  //     today.getDate() - 7
-  //   )
   render() {
     var today = new Date()
     var lastYear = new Date(today.getFullYear())
     var twoYears = new Date(2020)
+    // const shelf = this.props.books.userList.releaseDates
+    // const recents = shelf.filter(item => item.year >= twoYears)
+    // console.log('this recents', recents)
+
     return (
-      // <MuiThemeProvider theme={theme}>
-      // <div
-      //   style={{
-      //     float: 'none',
-      //     width: '500px',
-      //     marginLeft: 'auto',
-      //     marginRight: 'auto'
-      //     // display: 'flex'
-      //   }}
-      // >
-      /* <Button
-            label="Submit"
-            primary={'true'}
-            type="submit"
-            onClick={this.handleSubmit}
-          /> */
       <div id="cal">
         <InfiniteCalendar
           style={{
             layout: 'portrait',
-            // showOverlay: false,
-            // display: 'flex',
-            // flexGrow: 2,
-            // justifycontent: 'space-around',
+
             width: '60em',
             marginLeft: 'auto',
             marginRight: 'auto',
@@ -101,6 +68,7 @@ class ReleaseDates extends React.Component {
             accentColor: 'blue'
           }}
           // display={['years']}
+          disabledDate={(2018, 9, 24)}
           selected={today}
           minDate={new Date(2018, 0, 1)}
           maxDate={new Date(2020, 0, 1)}
@@ -109,4 +77,29 @@ class ReleaseDates extends React.Component {
     )
   }
 }
-export default connect()(ReleaseDates)
+// {shelf.map(item => {
+//   return (
+//     <li key={item.book.id._text}>
+// {item.book.title._text}
+//       {item.book.authors.author.name._text}</li>
+
+//       )
+
+const mapStateToProps = state => {
+  return {
+    // user: state.user,
+    ...state,
+    user: state.user.current,
+    // id: state.user.current.id,
+    // series: state.books.currentSeries,
+    userList: state.books.userList
+  }
+}
+// const id = '52637'
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     gotUserList: Userid => dispatch(getUserList(Userid)),
+//     gotCurrentSeries: id => dispatch(getSeries(id))
+//   }
+// }
+export default connect(mapStateToProps)(ReleaseDates)

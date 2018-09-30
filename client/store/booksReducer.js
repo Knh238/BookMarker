@@ -1,9 +1,10 @@
 //import axios from 'axios'
 import history from '../history'
+var config = require('../../secrets')
 const request = require('request')
 const convert = require('xml-js')
 
-request.mode = 'no-cors'
+// request.mode = 'no-cors'
 
 const GOT_USER_LIST = 'GOT_USER_LIST'
 const GOT_CURRENT_SERIES = 'GOT_CURRENT_SERIES'
@@ -85,6 +86,14 @@ export const getUserList = id => dispatch => {
       console.log(resBody)
       const list = resBody.GoodreadsResponse.reviews.review
       //   console.log(series)
+      const datesObj = list.map(item => ({
+        title: item.book.title._text,
+        month: +item.book.publication_month._text,
+        day: +item.book.publication_day._text,
+        year: +item.book.publication_year._text
+      }))
+      list.releaseDates = datesObj
+
       dispatch(gotUserList(list))
       // return result1
     }

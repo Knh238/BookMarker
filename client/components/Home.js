@@ -23,7 +23,6 @@ const styles = {
 }
 
 class Home extends React.Component {
-  // const { classes } = props;
   render() {
     return (
       <Card
@@ -40,7 +39,6 @@ class Home extends React.Component {
         </Typography>
         <CardMedia
           component="img"
-          // className={styles.media}
           height="50%"
           image="/bluesplotches.jpg"
           title="Contemplative Reptile"
@@ -52,26 +50,8 @@ class Home extends React.Component {
           </Typography>
         </CardContent>
       </Card>
-      // </div>
     )
   }
 }
 
-// Home.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
-// export default withStyles(styles)(Home)
 export default connect()(Home)
-
-// Home.propTypes = {
-//   classes: PropTypes.object.isRequired
-// }
-/* <Table /> */
-/* <TableBody />
-<TableCell />
-<TableFooter />
-<TableHead />
-<TablePagination />
-<TableRow />
-<TableSortLabel /> */
