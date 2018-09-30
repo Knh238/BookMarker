@@ -29,16 +29,19 @@
   height: 100%;
   margin: 0;
 } */
-#cal {
+/* #cal {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-grow: 1;
+
+} */
   /* width: 70em; */
-  /* height: 80%;
+/* height: 80%;
   margin: 0; */
-  /* flex-grow: 2; */
-  /* background: #f3f3f3; */
-}
+/* flex-grow: 2; */
+/* background: #f3f3f3;
+
 .books {
   color: azure;
   font-size: 2em;

@@ -4,14 +4,12 @@ import classNames from 'classnames'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {withStyles} from '@material-ui/core/styles'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-import {createMuiTheme} from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
@@ -30,10 +28,6 @@ import StarIcon from '@material-ui/icons/Star'
 import SendIcon from '@material-ui/icons/Send'
 import MailIcon from '@material-ui/icons/Mail'
 import LoyaltyIcon from '@material-ui/icons/Loyalty'
-import DeleteIcon from '@material-ui/icons/Delete'
-import ReportIcon from '@material-ui/icons/Report'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import Navbar from './navbar'
 // import {connect} from 'http2'
 
@@ -63,7 +57,6 @@ const styles = theme => ({
   },
   toolbar: theme.mixins.toolbar
 })
-// const theme = createMuiTheme({palette: {type: 'dark'}})
 
 class Main extends React.Component {
   state = {
@@ -80,7 +73,6 @@ class Main extends React.Component {
   render() {
     // const {classes, theme} = this.props
     return (
-      // <MuiThemeProvider theme={theme}>
       <div className={styles.root}>
         <Toolbar>
           <IconButton
@@ -171,7 +163,6 @@ class Main extends React.Component {
           <div className={styles.toolbar} />
         </main>
       </div>
-      // </MuiThemeProvider>
     )
   }
 }

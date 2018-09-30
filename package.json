@@ -66,6 +66,7 @@
     "react": "^16.5.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-big-calendar": "^0.20.1",
+    "react-big-calendar-like-google": "0.0.3",
     "react-dates": "^18.1.0",
     "react-dom": "^16.5.2",
     "react-infinite-calendar": "^2.3.1",
