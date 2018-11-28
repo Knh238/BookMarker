@@ -32,12 +32,10 @@ const addedDates = dates => ({
   type: ADDED_DATES,
   dates
 })
-
+// this.props.gotCurrentSeries('52637')
 export const getSeries = id => dispatch => {
   request.get(
-    `https://www.goodreads.com/series/show?key=${
-      process.env.GOODREADS_KEY
-    }&id=${id}.xml`,
+    `https://www.goodreads.com/series/show?key=0PwPMvqFRKns4bpgBnkRg&id=${id}.xml`,
     (err, res, body) => {
       if (err) {
         return console.log(err)
@@ -62,12 +60,10 @@ export const getSeries = id => dispatch => {
     }
   )
 }
-
+// this.props.gotUserList('5900639')
 export const getUserList = id => dispatch => {
   request.get(
-    `https://www.goodreads.com/review/list/${id}.xml?shelf=demo&key=${
-      process.env.GOODREADS_KEY
-    }&v=2?`,
+    `https://www.goodreads.com/review/list/${id}.xml?shelf=demo&key=0PwPMvqFRKns4bpgBnkRg&v=2?`,
     (err, res, body) => {
       if (err) {
         return console.log(err)
@@ -93,6 +89,7 @@ export const getUserList = id => dispatch => {
         year: +item.book.publication_year._text
       }))
       list.releaseDates = datesObj
+      console.log('id', id)
 
       dispatch(gotUserList(list))
       // return result1

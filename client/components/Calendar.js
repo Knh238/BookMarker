@@ -3,13 +3,13 @@ import moment from 'moment'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import Button from '@material-ui/core/Button'
-// import InfiniteCalendar from 'react-infinite-calendar'
-// import 'react-infinite-calendar/styles.css'
+import InfiniteCalendar from 'react-infinite-calendar'
+import 'react-infinite-calendar/styles.css'
 // import BigCalendar from 'react-big-calendar'
-import BigCalendar from 'react-big-calendar-like-google'
-import styles from 'react-big-calendar-like-google/lib/css/react-big-calendar.css'
+// import BigCalendar from 'react-big-calendar-like-google'
+// import styles from 'react-big-calendar-like-google/lib/css/react-big-calendar.css'
 
-const localizer = BigCalendar.momentLocalizer(moment)
+// const localizer = BigCalendar.momentLocalizer(moment)
 
 class ReleaseDates extends React.Component {
   constructor(props) {
@@ -55,56 +55,33 @@ class ReleaseDates extends React.Component {
     // const shelf = this.props.books.userList.releaseDates
     // const recents = shelf.filter(item => item.year >= twoYears)
     // console.log('this recents', recents)
-    const myEventsList = [
-      {
-        title: 'Today',
-        allDay: true,
-        start: new Date(2018, 9, 30),
-        end: new Date(2018, 10, 1)
-      },
-      {
-        title: 'Long Event',
-        start: new Date(2018, 3, 7),
-        end: new Date(2018, 11, 10)
-      }
-    ]
-    let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
+    // const myEventsList = [
+    //   {
+    //     title: 'Today',
+    //     allDay: true,
+    //     start: new Date(2018, 9, 30),
+    //     end: new Date(2018, 10, 1)
+    //   },
+    //   {
+    //     title: 'Long Event',
+    //     start: new Date(2018, 3, 7),
+    //     end: new Date(2018, 11, 10)
+    //   }
+    // ]
+    // let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 
     return (
-      // <div
-      //   style={{
-      //     display: 'flex',
-      //     alignItems: 'center',
-      //     justifyContent: 'center'
-      //   }}
-      // >
       <div
         style={{
-          backgroundColor: 'white',
           padding: '20px 0px',
-          height: '80%',
-          display: 'flex'
+          height: '400px',
+          display: 'flex',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          justifyContent: 'center'
         }}
         centered="true"
       >
-        {/* <BigCalendar
-          localizer={localizer}
-          events={myEventsList}
-          startAccessor="start"
-          endAccessor="end"
-          style={{height: '400px'}}
-          defaultDate={new Date(2015, 3, 1)}
-        /> */}
-        <BigCalendar
-          events={myEventsList}
-          startAccessor="start"
-          endAccessor="end"
-          step={60}
-          {...this.props}
-          defaultDate={new Date(2018, 10, 1)}
-          //views={allViews}
-        />
-        {/* /*{' '}
         <InfiniteCalendar
           theme={{
             layout: 'portrait',
@@ -137,18 +114,18 @@ class ReleaseDates extends React.Component {
           selected={today}
           minDate={new Date(2018, 0, 1)}
           maxDate={new Date(2020, 0, 1)}
-        />{' '} */}
+        />
       </div>
     )
   }
 }
-// {shelf.map(item => {
+/* // {shelf.map(item => {
 //   return (
 //     <li key={item.book.id._text}>
 // {item.book.title._text}
 //       {item.book.authors.author.name._text}</li>
 
-//       )
+//       ) */
 
 const mapStateToProps = state => {
   return {
@@ -160,11 +137,11 @@ const mapStateToProps = state => {
     userList: state.books.userList
   }
 }
-// const id = '52637'
-// const mapDispatchToProps = dispatch => {
-//   return {
+/* // const id = '52637'
+// const mapDispatchToProps = dispatch => { */
+/* //   return {
 //     gotUserList: Userid => dispatch(getUserList(Userid)),
 //     gotCurrentSeries: id => dispatch(getSeries(id))
 //   }
-// }
+// } */
 export default connect(mapStateToProps)(ReleaseDates)

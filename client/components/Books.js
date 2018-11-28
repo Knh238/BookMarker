@@ -103,7 +103,7 @@ const mapStateToProps = state => {
 const id = '52637'
 const mapDispatchToProps = dispatch => {
   return {
-    gotUserList: Userid => dispatch(getUserList(Userid)),
+    gotUserList: id => dispatch(getUserList(id)),
     gotCurrentSeries: id => dispatch(getSeries(id))
   }
 }
