@@ -32,7 +32,7 @@ const addedDates = dates => ({
   type: ADDED_DATES,
   dates
 })
-// this.props.gotCurrentSeries('52637')
+
 export const getSeries = id => dispatch => {
   request.get(
     `https://www.goodreads.com/series/show?key=0PwPMvqFRKns4bpgBnkRg&id=${id}.xml`,
@@ -60,7 +60,7 @@ export const getSeries = id => dispatch => {
     }
   )
 }
-// this.props.gotUserList('5900639')
+
 export const getUserList = id => dispatch => {
   request.get(
     `https://www.goodreads.com/review/list/${id}.xml?shelf=demo&key=0PwPMvqFRKns4bpgBnkRg&v=2?`,
@@ -77,11 +77,11 @@ export const getUserList = id => dispatch => {
         ignoreDoctype: true,
         ignoreDeclaration: true
       })
-      // const {series} = result1.series
+
       const resBody = JSON.parse(result1)
       console.log(resBody)
       const list = resBody.GoodreadsResponse.reviews.review
-      //   console.log(series)
+
       const datesObj = list.map(item => ({
         title: item.book.title._text,
         month: +item.book.publication_month._text,
@@ -92,7 +92,6 @@ export const getUserList = id => dispatch => {
       console.log('id', id)
 
       dispatch(gotUserList(list))
-      // return result1
     }
   )
 }

@@ -32,16 +32,14 @@ const styles = theme => ({
     backgroundColor: theme.palette.secondary.main
   },
   form: {
-    width: '60%', // Fix IE11 issue.
+    width: '60%',
     marginTop: theme.spacing.unit
   },
   submit: {
     marginTop: theme.spacing.unit * 3
   }
 })
-/**
- * COMPONENT
- */
+
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
   console.log('ME PROPS', props)
@@ -62,29 +60,7 @@ const AuthForm = props => {
             <h2 className="logForm">{displayName} with goodreads</h2>
           </a>
         </Button>
-        {/* <a href="/auth/goodreads">
-          <h2 className="logForm">{displayName} with goodreads</h2>
-        </a> */}
-        {/* <form onSubmit={handleSubmit} name={name}>
-            <div>
-              <label htmlFor="email">
-                <h2 color="white">Email</h2>
-              </label>
-              <input name="email" type="text" />
-            </div>
-            <div>
-              <label htmlFor="password">
-                <h2 color="white">password</h2>
-              </label>
-              <input name="password" type="password" />
-            </div>
-            <div>
-              <button type="submit">
-                <h2>{displayName}</h2>
-              </button>
-            </div>
-            {error && error.response && <div> {error.response.data} </div>}
-          </form> */}
+
         <Avatar className={styles.avatar}>
           <LockIcon />
         </Avatar>
@@ -95,7 +71,7 @@ const AuthForm = props => {
           className={styles.form}
           style={{
             float: 'none',
-            // width: '250px',
+
             marginLeft: 'auto',
             marginRight: 'auto'
           }}
@@ -122,21 +98,11 @@ const AuthForm = props => {
             Sign in
           </Button>
         </form>
-        {/* <a href="/auth/goodreads">
-            <h2 className="logForm">{displayName} with goodreads</h2>
-          </a> */}
       </Paper>
     </main>
   )
 }
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = state => {
   return {
     name: 'login',
@@ -168,9 +134,6 @@ const mapDispatch = (dispatch, ownProps) => {
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 
-/**
- * PROP TYPES
- */
 AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,

@@ -1,29 +1,14 @@
 import axios from 'axios'
 import history from '../history'
-// const request = require('request')
 
-/**
- * ACTION TYPES
- */
 const GET_USER = 'GET_USER'
 const REMOVED_USER_FROM_LOGIN = 'REMOVED_USER_FROM_LOGIN'
 
-/**
- * INITIAL STATE
- */
 const defaultUser = {}
-/**
- * ACTION CREATORS
- */
+
 const getUser = user => ({type: GET_USER, user})
 const removedUserFromLogin = () => ({type: REMOVED_USER_FROM_LOGIN})
 
-// request.mode = 'no-cors'
-
-// )
-/**
- * THUNK CREATORS
- */
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
@@ -59,11 +44,8 @@ export const logout = history => async dispatch => {
   }
 }
 
-// const defaultUser = {}
 const initialState = {current: {}}
-/**
- * REDUCER
- */
+
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_USER:

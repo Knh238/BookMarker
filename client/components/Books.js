@@ -13,9 +13,6 @@ import {getUserList, getSeries} from '../store/booksReducer'
 import {Link} from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
-// import GridList from '@material-ui/core/GridList'
-// import GridListTile from '@material-ui/core/GridListTile'
-// import tileData from './tileData'
 
 const styles = theme => ({
   container: {
@@ -37,18 +34,14 @@ const styles = theme => ({
 class Books extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = {list: {}}
+    this.state = {}
   }
   componentDidMount() {
     this.props.gotCurrentSeries('52637')
     this.props.gotUserList('5900639')
   }
   render() {
-    // console.log('this props'.this.props)
-
-    console.log(this.props)
     const books = this.props.userlist
-    console.log('these books', books)
     const shelf = this.props.books.userList
 
     return (
