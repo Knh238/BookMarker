@@ -29,7 +29,6 @@ import SendIcon from '@material-ui/icons/Send'
 import MailIcon from '@material-ui/icons/Mail'
 import LoyaltyIcon from '@material-ui/icons/Loyalty'
 import Navbar from './navbar'
-// import {connect} from 'http2'
 
 const drawerWidth = 240
 
@@ -71,7 +70,6 @@ class Main extends React.Component {
     this.setState({open: false})
   }
   render() {
-    // const {classes, theme} = this.props
     return (
       <div className={styles.root}>
         <Toolbar>
@@ -166,11 +164,5 @@ class Main extends React.Component {
     )
   }
 }
-
-/* // Main.propTypes = { */
-
-/* //  classes: PropTypes.object.isRequired,
-//  theme: PropTypes.object.isRequired
-//  } */
 
 export default connect()(Main)

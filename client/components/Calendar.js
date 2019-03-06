@@ -119,13 +119,7 @@ class ReleaseDates extends React.Component {
     )
   }
 }
-/* // {shelf.map(item => {
-//   return (
-//     <li key={item.book.id._text}>
-// {item.book.title._text}
-//       {item.book.authors.author.name._text}</li>
 
-//       ) */
 
 const mapStateToProps = state => {
   return {
@@ -137,11 +131,11 @@ const mapStateToProps = state => {
     userList: state.books.userList
   }
 }
-/* // const id = '52637'
+
 // const mapDispatchToProps = dispatch => { */
 /* //   return {
 //     gotUserList: Userid => dispatch(getUserList(Userid)),
 //     gotCurrentSeries: id => dispatch(getSeries(id))
 //   }
-// } */
+
 export default connect(mapStateToProps)(ReleaseDates)

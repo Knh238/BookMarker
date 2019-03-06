@@ -107,7 +107,6 @@ class Navbar extends React.Component {
               BookMarker
             </Typography>
             <Divider />
-            {/* {this.state.isLoggedIn ? ( */}
             <div className="forceR">
               <IconButton
                 aria-owns={open ? 'menu-appbar' : null}
